@@ -18,16 +18,14 @@ export default function Logo({ size = 'xs' }: Props) {
     getInitialValueInEffect: true,
   });
   const logo =
-    colorScheme === 'dark'
-      ? '/images/logo-white.png'
-      : '/images/logo-black.png';
+    colorScheme === 'dark' ? '/images/logo-white.png' : '/images/logo.png';
 
   const sizeMap = {
-    xs: 15,
-    sm: 20,
-    md: 50,
-    lg: 80,
-    xl: 120,
+    xs: 20,
+    sm: 80,
+    md: 120,
+    lg: 200,
+    xl: 400,
   };
 
   return (
@@ -36,7 +34,7 @@ export default function Logo({ size = 'xs' }: Props) {
         component={NextImage}
         h={sizeMap[size]}
         width={sizeMap[size] * 5}
-        height={sizeMap[size] * 2}
+        height={sizeMap[size] * 5}
         src={logo}
         alt='Logo'
       />

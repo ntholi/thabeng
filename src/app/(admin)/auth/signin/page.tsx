@@ -23,7 +23,7 @@ function SignInPage() {
   return (
     <Stack p={'md'} h={'100vh'} w={'100vw'} align={'center'} justify='center'>
       <Paper p={60} withBorder shadow='sm'>
-        <Logo size={'sm'} />
+        <Logo size={'md'} />
         <Stack mt={'lg'} align={'center'} justify={'center'}>
           <Button
             mt={'lg'}
