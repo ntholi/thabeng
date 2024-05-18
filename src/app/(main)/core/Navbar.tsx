@@ -8,7 +8,6 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Link,
-  Button,
 } from '@nextui-org/react';
 import { useState } from 'react';
 import NextLink from 'next/link';
