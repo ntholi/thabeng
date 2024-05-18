@@ -7,6 +7,7 @@ import {
   IconChevronRight,
   IconHome,
   IconLogout2,
+  IconMeat,
   IconNews,
   IconUserEdit,
 } from '@tabler/icons-react';
@@ -44,6 +45,14 @@ export default function Navigation() {
           active={pathname.startsWith('/admin/rooms')}
           href={'/admin/rooms'}
           leftSection={<IconBed size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
+        />
+        <NavLink
+          label='Restaurant'
+          component={Link}
+          active={pathname.startsWith('/admin/restaurant')}
+          href={'/admin/restaurant'}
+          leftSection={<IconMeat size='1.1rem' />}
           rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
       </AppShell.Section>
