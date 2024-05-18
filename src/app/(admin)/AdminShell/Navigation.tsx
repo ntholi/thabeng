@@ -3,6 +3,7 @@ import { AppShell, Avatar, Divider, NavLink, ScrollArea } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import {
   IconBed,
+  IconCalendarEvent,
   IconCategory,
   IconChevronRight,
   IconHome,
@@ -53,6 +54,14 @@ export default function Navigation() {
           active={pathname.startsWith('/admin/restaurant')}
           href={'/admin/restaurant'}
           leftSection={<IconMeat size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
+        />
+        <NavLink
+          label='Events'
+          component={Link}
+          active={pathname.startsWith('/admin/events')}
+          href={'/admin/events'}
+          leftSection={<IconCalendarEvent size='1.1rem' />}
           rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
       </AppShell.Section>

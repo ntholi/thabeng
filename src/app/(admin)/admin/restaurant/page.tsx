@@ -37,9 +37,9 @@ export default function MenuItemPage() {
             component={NextImage}
             height={50}
             width={50}
-            radius='md'
-            h={30}
-            w={30}
+            radius='sm'
+            h={50}
+            w={50}
             fit='contain'
           />
         ),
