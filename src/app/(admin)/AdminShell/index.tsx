@@ -71,7 +71,7 @@ export default function AdminShell({ children }: PropsWithChildren) {
               hiddenFrom='md'
               size='sm'
             />
-            <Logo size='sm' />
+            <Logo size='xs' />
           </Group>
           <ActionIcon variant='default' size='lg'>
             {colorScheme === 'dark' ? (

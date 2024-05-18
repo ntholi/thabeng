@@ -21,7 +21,7 @@ export default function Logo({ size = 'xs' }: Props) {
     colorScheme === 'dark' ? '/images/logo-white.png' : '/images/logo.png';
 
   const sizeMap = {
-    xs: 20,
+    xs: 60,
     sm: 80,
     md: 120,
     lg: 200,
@@ -33,8 +33,8 @@ export default function Logo({ size = 'xs' }: Props) {
       <Image
         component={NextImage}
         h={sizeMap[size]}
-        width={sizeMap[size] * 5}
-        height={sizeMap[size] * 5}
+        width={sizeMap[size] * 3}
+        height={sizeMap[size] * 3}
         src={logo}
         alt='Logo'
       />

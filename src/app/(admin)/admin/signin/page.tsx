@@ -5,7 +5,7 @@ import { IconBrandGoogleFilled } from '@tabler/icons-react';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import AdminLogo from '../../AdminShell/Logo';
+import Logo from '../../AdminShell/Logo';
 
 function SignInPage() {
   const router = useRouter();
@@ -23,7 +23,7 @@ function SignInPage() {
   return (
     <Stack p={'md'} h={'100vh'} w={'100vw'} align={'center'} justify='center'>
       <Paper p={60} withBorder shadow='sm'>
-        <AdminLogo />
+        <Logo />
         <Stack mt={'lg'} align={'center'} justify={'center'}>
           <Button
             mt={'lg'}
