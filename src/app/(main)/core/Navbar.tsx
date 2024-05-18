@@ -23,11 +23,15 @@ export default function Navbar() {
   const menuItems = [
     { label: 'Home', href: '/' },
     {
-      label: 'Agencies',
+      label: 'Restaurant',
       href: '#',
     },
     {
-      label: 'Contact Us',
+      label: 'Hotel',
+      href: '#',
+    },
+    {
+      label: 'Events',
       href: '#',
     },
   ];
