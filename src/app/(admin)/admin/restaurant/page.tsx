@@ -18,6 +18,7 @@ import TextAreaField from '../../admin-core/form/TextAreaField';
 import { MenuItem } from './MenuItem';
 import { menuitemRepository } from './repository';
 import NumberField from '../../admin-core/form/NumberField';
+import { formatMoney } from '@/lib/utils/format';
 
 export default function MenuItemPage() {
   return (
@@ -51,7 +52,7 @@ function MenuItemDetails({ item }: { item: MenuItem }) {
   return (
     <DetailsView>
       <FieldView label='Name' value={item.name} />
-      <FieldView label='Price' value={item.price} />
+      <FieldView label='Price' value={formatMoney(item.price)} />
       <FieldView
         label={shorten(stripHtml(item.description), 100)}
         value={'Description'}
