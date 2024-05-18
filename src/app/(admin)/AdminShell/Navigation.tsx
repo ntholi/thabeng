@@ -2,6 +2,7 @@ import { auth } from '@/lib/config/firebase';
 import { AppShell, Avatar, Divider, NavLink, ScrollArea } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import {
+  IconBed,
   IconCategory,
   IconChevronRight,
   IconHome,
@@ -38,19 +39,11 @@ export default function Navigation() {
           rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
         <NavLink
-          label='Categories'
+          label='Rooms'
           component={Link}
-          active={pathname.startsWith('/admin/categories')}
-          href={'/admin/categories'}
-          leftSection={<IconCategory size='1.1rem' />}
-          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
-        />
-        <NavLink
-          label='Authors'
-          component={Link}
-          active={pathname.startsWith('/admin/authors')}
-          href={'/admin/authors'}
-          leftSection={<IconUserEdit size='1.1rem' />}
+          active={pathname.startsWith('/admin/rooms')}
+          href={'/admin/rooms'}
+          leftSection={<IconBed size='1.1rem' />}
           rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
       </AppShell.Section>
