@@ -34,7 +34,6 @@ export default function PostPage() {
       details={PostDetails}
       navLinkProps={(it) => ({
         label: shorten(it.title, 36),
-        description: `By ${it.author?.name || 'Anonymous'}`,
         rightSection: it.published ? (
           <IconCheck size={'1.2rem'} color='green' />
         ) : (
@@ -55,18 +54,6 @@ function PostDetails({ item }: { item: Post }) {
       <FieldView label='Title' value={item.title} />
       <FieldView label={shorten(item.caption)} value={'Caption'} />
       <FieldView label={stripHtml(item.body, 100)} value='Body' />
-      <ReferenceView
-        reference='categories'
-        referenceKey={item?.category?.id}
-        label='Category'
-        value={item?.category?.name}
-      />
-      <ReferenceView
-        reference='authors'
-        referenceKey={item?.author?.id}
-        label='Author'
-        value={item?.author?.name}
-      />
       <div>
         {item.image && (
           <Image
@@ -82,7 +69,6 @@ function PostDetails({ item }: { item: Post }) {
           />
         )}
       </div>
-      <FieldView label='Image Caption' value={item.imageCaption} />
     </DetailsView>
   );
 }
@@ -97,15 +83,7 @@ function PostCreate(props: CreateViewProps<Post>) {
     >
       <TextField name='title' />
       <TextField name='caption' />
-      <TextAreaField name='lead' />
-      <ReferenceField
-        referenceLabel='name'
-        reference='categories'
-        name='category'
-      />
-      <ReferenceField referenceLabel='name' reference='authors' name='author' />
       <ImagePicker name='image' folder='posts' />
-      <TextField name='imageCaption' />
       <RichTextField name='body' />
     </CreateView>
   );
@@ -121,15 +99,7 @@ function PostEdit(props: EditViewProps<Post>) {
     >
       <TextField name='title' />
       <TextField name='caption' />
-      <TextAreaField name='lead' />
-      <ReferenceField
-        referenceLabel='name'
-        reference='categories'
-        name='category'
-      />
-      <ReferenceField referenceLabel='name' reference='authors' name='author' />
       <ImagePicker name='image' folder='posts' />
-      <TextField name='imageCaption' />
       <RichTextField name='body' />
     </EditView>
   );
