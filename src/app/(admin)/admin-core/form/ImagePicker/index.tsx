@@ -73,7 +73,7 @@ export default function ImagePicker(props: ImagePickerProps) {
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             setImage(downloadURL);
             props.onChange(downloadURL);
-          },
+          }
         );
       }
     } finally {
@@ -103,7 +103,7 @@ export default function ImagePicker(props: ImagePickerProps) {
         hidden
       />
       <Text size='sm' fw={500}>
-        {props.label || variableToLabel(props.name)}
+        {props.label || variableToLabel(props.name || 'image')}
       </Text>
       <Paper
         withBorder

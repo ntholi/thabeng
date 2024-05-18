@@ -20,10 +20,10 @@ type Props = {
 } & InputProps;
 
 export default function RichTextField(props: Props) {
-  const label = props.label || variableToLabel(props.name);
+  const label = props.label || variableToLabel(props.name || '');
   const [opened, { close, open }] = useDisclosure(false);
   const [content, setContent] = useState(
-    props.value || props.defaultValue || '',
+    props.value || props.defaultValue || ''
   );
 
   const handleContentChange = (newContent: string) => {

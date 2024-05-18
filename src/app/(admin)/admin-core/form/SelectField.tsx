@@ -4,7 +4,7 @@ import { variableToLabel } from '../utils/utils';
 import { SelectFieldProps } from '../types';
 
 export default function SelectField(props: SelectFieldProps) {
-  const label = props.label || variableToLabel(props.name);
+  const label = props.label || variableToLabel(props.name || '');
   return (
     <Select
       {...props}

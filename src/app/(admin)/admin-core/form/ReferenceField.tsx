@@ -31,7 +31,7 @@ export default function ReferenceField<T extends Resource>({
     }
   }, [props.reference, props.repository, props.value, referenceLabel]);
 
-  const label = props.label || variableToLabel(props.name);
+  const label = props.label || variableToLabel(props.name || '');
   return (
     <Select
       {...props}

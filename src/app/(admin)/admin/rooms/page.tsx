@@ -17,13 +17,14 @@ import NextImage from 'next/image';
 import TextAreaField from '../../admin-core/form/TextAreaField';
 import { Room } from './Room';
 import { roomRepository } from './repository';
+import RoomForm from './RoomForm';
 
 export default function RoomPage() {
   return (
     <ResourcePage
       resourceLabel='Rooms'
       repository={roomRepository}
-      create={RoomCreate}
+      create={RoomForm}
       edit={RoomEdit}
       details={RoomDetails}
       navLinkProps={(it) => ({ label: `${it.name}` })}

@@ -4,7 +4,7 @@ import { variableToLabel } from '../utils/utils';
 import { InputProps } from '../types';
 
 export default function NumberField(props: InputProps) {
-  const label = props.label || variableToLabel(props.name);
+  const label = props.label || variableToLabel(props.name || '');
   return (
     <NumberInput
       {...props}

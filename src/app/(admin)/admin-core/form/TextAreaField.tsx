@@ -7,7 +7,7 @@ type Props = {
 } & InputProps;
 
 export default function TextField(props: Props) {
-  const label = props.label || variableToLabel(props.name);
+  const label = props.label || variableToLabel(props.name || '');
   return (
     <Textarea
       {...props}

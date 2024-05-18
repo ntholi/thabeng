@@ -1,7 +1,7 @@
 import { Repository, Resource } from './repository/repository';
 
 export type InputProps = {
-  name: string;
+  name?: string;
   label?: string;
   placeholder?: string;
   value?: any;
