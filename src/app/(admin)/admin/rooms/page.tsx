@@ -12,10 +12,10 @@ import {
   TextField,
 } from '@/app/(admin)/admin-core';
 import { shorten, stripHtml } from '@/lib/utils';
-import { Image, SimpleGrid, Tabs } from '@mantine/core';
+import { Image, SimpleGrid, Table, Tabs, Title } from '@mantine/core';
 import NextImage from 'next/image';
 import TextAreaField from '../../admin-core/form/TextAreaField';
-import { Room } from './Room';
+import { Amenities, Room } from './Room';
 import { roomRepository } from './repository';
 import RoomForm from './RoomForm';
 import { IconInfoSquare, IconPhoto } from '@tabler/icons-react';
@@ -61,6 +61,7 @@ function RoomDetails({ room }: { room: Room }) {
       <FieldView label='Name' value={room.name} />
       <FieldView label='Description' value={room.description} />
       <FieldView label='Price' value={formatMoney(room.price)} />
+      <AmenitiesTable amenities={room.amenities} />
     </DetailsView>
   );
 }
@@ -93,5 +94,31 @@ function RoomPhotos({ item }: { item: Room }) {
         ))}
       </SimpleGrid>
     </DetailsView>
+  );
+}
+
+function AmenitiesTable({ amenities }: { amenities: Amenities[] }) {
+  return (
+    <>
+      <Title size={'1.1rem'} fw={'normal'} mt={'md'}>
+        Amenities
+      </Title>
+      <Table withTableBorder>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>Name</Table.Th>
+            <Table.Th>Count</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+          {amenities.map((amenity) => (
+            <Table.Tr>
+              <Table.Td>{amenity.name}</Table.Td>
+              <Table.Td>{amenity.count}</Table.Td>
+            </Table.Tr>
+          ))}
+        </Table.Tbody>
+      </Table>
+    </>
   );
 }
