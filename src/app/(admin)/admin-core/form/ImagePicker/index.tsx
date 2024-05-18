@@ -103,7 +103,7 @@ export default function ImagePicker(props: ImagePickerProps) {
         hidden
       />
       <Text size='sm' fw={500}>
-        {props.label || variableToLabel(props.name || 'image')}
+        {props.label || variableToLabel(props.name || '')}
       </Text>
       <Paper
         withBorder

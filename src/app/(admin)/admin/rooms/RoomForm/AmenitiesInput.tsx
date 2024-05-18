@@ -10,6 +10,7 @@ import {
   Button,
   Group,
   ActionIcon,
+  Flex,
 } from '@mantine/core';
 import { IconTrashFilled } from '@tabler/icons-react';
 
@@ -26,7 +27,7 @@ export default function AmenitiesInput({ form }: Props) {
       <Table.Tr>
         <Table.Td>{amenity.name}</Table.Td>
         <Table.Td>{amenity.count}</Table.Td>
-        <Table.Td>
+        <Table.Td ta={'right'}>
           <ActionIcon
             variant='light'
             color='red'
@@ -46,40 +47,46 @@ export default function AmenitiesInput({ form }: Props) {
 
   return (
     <Stack py={50} px={70} pb={120}>
-      <Group>
-        <TextInput
-          label='Name'
-          placeholder='Name'
-          value={name}
-          onChange={(e) => setName(e.currentTarget.value)}
-        />
-        <NumberInput
-          label='Count'
-          placeholder='Count'
-          value={count}
-          onChange={(value) => setCount(Number(value))}
-        />
+      <Flex justify={'space-between'}>
+        <Group align='center'>
+          <TextInput
+            label='Name'
+            placeholder='Name'
+            w={200}
+            value={name}
+            onChange={(e) => setName(e.currentTarget.value)}
+          />
+          <NumberInput
+            label='Count'
+            placeholder='Count'
+            value={count}
+            onChange={(value) => setCount(Number(value))}
+          />
+        </Group>
         <Button
+          mt={22}
           variant='default'
           onClick={() => {
-            form.setFieldValue('amenities', [
-              ...(form.values.amenities || []),
-              { name, count },
-            ]);
-            setName('');
-            setCount(0);
+            if (name && count) {
+              form.setFieldValue('amenities', [
+                ...(form.values.amenities || []),
+                { name, count },
+              ]);
+              setName('');
+              setCount(0);
+            }
           }}
         >
           Add
         </Button>
-      </Group>
+      </Flex>
 
-      <Table>
+      <Table withTableBorder mt={'md'}>
         <Table.Thead>
           <Table.Tr>
             <Table.Th>Name</Table.Th>
             <Table.Th>Count</Table.Th>
-            <Table.Th>Action</Table.Th>
+            <Table.Th ta={'right'}>Action</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>
