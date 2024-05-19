@@ -14,7 +14,7 @@ export default function Home() {
           backgroundImage: `url(${banner})`,
         }}
         className={cn(
-          'absolute h-[100vh] w-[100vw] top-0 bg-black/10 bg-cover bg-center text-white bg-blend-overlay',
+          'absolute h-[100vh] w-[100vw] top-0 bg-black/20 bg-cover bg-center text-white bg-blend-overlay',
           'flex flex-col justify-center items-center'
         )}
       >
@@ -25,7 +25,9 @@ export default function Home() {
         </div>
         <nav
           className={cn(
-            'flex justify-center gap-5 py-6 backdrop-blur-sm bg-white/30 absolute w-full bottom-0 sm:mx-auto shadow-sm'
+            'flex justify-center gap-5 py-6  absolute w-full bottom-0 sm:mx-auto',
+            'backdrop-blur-sm bg-white/30',
+            'w-[60vw] mx-auto rounded-t-lg sm:rounded-lg'
           )}
         >
           <ClickableCard icon={MdHotel} text='Hotel' />
@@ -47,7 +49,7 @@ function ClickableCard({ icon: Icon, text }: ClickableCardProps) {
     <Link
       href='#'
       className={cn(
-        'rounded-md border bg-white/80 py-4 text-black',
+        'rounded-md bg-blue-900/70 py-3 text-white',
         'flex gap-2 w-40 justify-center'
       )}
     >
