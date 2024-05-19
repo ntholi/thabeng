@@ -18,12 +18,12 @@ export default function Home() {
           'flex flex-col justify-center items-center'
         )}
       >
-        <div className='h-56 flex flex-col items-center dark-overlay p-5'>
+        <div className='h-56 flex flex-col items-center dark-overlay px-20 py-5'>
           <h1 className={cn(josefinSans.className, 'text-6xl font-bold')}>
             Thabeng Hotel
           </h1>
           <article>
-            <p className='text-lg'>
+            <p className='mt-4'>
               Welcome to Thabeng Hotel, where you can find the best services for
               your stay.
             </p>
@@ -56,7 +56,7 @@ function ClickableCard({ icon: Icon, text }: ClickableCardProps) {
     <Link
       href='#'
       className={cn(
-        'rounded-md bg-blue-900/70 py-4 text-white',
+        'rounded-md bg-blue-900/80 py-4 text-white',
         'flex gap-2 w-40 justify-center'
       )}
     >
