@@ -14,20 +14,27 @@ export default function Home() {
           backgroundImage: `url(${banner})`,
         }}
         className={cn(
-          'absolute h-[100vh] w-[100vw] top-0 bg-black/20 bg-cover bg-center text-white bg-blend-overlay',
+          'absolute h-[100vh] w-[100vw] top-0 bg-black/15 bg-cover bg-center text-white bg-blend-overlay',
           'flex flex-col justify-center items-center'
         )}
       >
-        <div className='h-56'>
+        <div className='h-56 flex flex-col items-center dark-overlay p-5'>
           <h1 className={cn(josefinSans.className, 'text-6xl font-bold')}>
             Thabeng Hotel
           </h1>
+          <article>
+            <p className='text-lg'>
+              Welcome to Thabeng Hotel, where you can find the best services for
+              your stay.
+            </p>
+          </article>
         </div>
         <nav
           className={cn(
-            'flex justify-center gap-5 py-6  absolute w-full bottom-0 sm:mx-auto',
+            'absolute w-full bottom-5',
+            'flex justify-center gap-5 py-6 w-[60vw] sm:mx-auto',
             'backdrop-blur-sm bg-white/30',
-            'w-[60vw] mx-auto rounded-t-lg sm:rounded-lg'
+            'rounded-t-lg sm:rounded-lg'
           )}
         >
           <ClickableCard icon={MdHotel} text='Hotel' />
@@ -49,7 +56,7 @@ function ClickableCard({ icon: Icon, text }: ClickableCardProps) {
     <Link
       href='#'
       className={cn(
-        'rounded-md bg-blue-900/70 py-3 text-white',
+        'rounded-md bg-blue-900/70 py-4 text-white',
         'flex gap-2 w-40 justify-center'
       )}
     >
