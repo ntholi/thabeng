@@ -45,7 +45,7 @@ export async function apiFetch<T>(url: string, options?: RequestInit) {
   }
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/${formattedUrl}`,
-    options,
+    options
   );
   const data = await res.json();
   return data as T;

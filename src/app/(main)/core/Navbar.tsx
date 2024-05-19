@@ -37,7 +37,7 @@ export default function Navbar() {
   ];
 
   return (
-    <NextUiNavbar onMenuOpenChange={setIsMenuOpen}>
+    <NextUiNavbar onMenuOpenChange={setIsMenuOpen} className='h-[8vh]'>
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -48,7 +48,7 @@ export default function Navbar() {
             src={'/images/logo.png'}
             width={50}
             height={50}
-            className='size-10'
+            className='h-10 w-auto'
             alt={'Thabeng Hotel'}
           />
         </NavbarBrand>
