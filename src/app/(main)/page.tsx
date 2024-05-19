@@ -4,17 +4,22 @@ import Link from 'next/link';
 import { MdFastfood as FastFood, MdCelebration, MdHotel } from 'react-icons/md';
 
 export default function Home() {
+  const banner = '/images/test-image.jpg';
   return (
     <main>
-      <header className='relative h-[92vh]'>
-        <Image
-          src='/images/test-image.jpg'
-          width={1500}
-          height={1500}
-          className='w-full h-full object-cover'
-          alt='Thabeng Hotel'
-        />
-        <nav className='flex justify-center gap-5 p-5 bg-black/50 absolute w-full bottom-0 sm:mx-auto shadow-sm'>
+      <header
+        style={{
+          backgroundImage: `url(${banner})`,
+        }}
+        className={cn(
+          'relative h-[92vh] bg-black/5 bg-cover bg-center text-white bg-blend-overlay',
+          'flex flex-col justify-center items-center'
+        )}
+      >
+        <div className='p-52 dark-overlay'>
+          <h1 className='text-5xl'>Thabeng Hotel</h1>
+        </div>
+        <nav className='flex justify-center gap-5 py-6 bg-black/50 absolute w-full bottom-0 sm:mx-auto shadow-sm'>
           <ClickableCard icon={MdHotel} text='Hotel' />
           <ClickableCard icon={FastFood} text='Restaurant' />
           <ClickableCard icon={MdCelebration} text='Events' />
