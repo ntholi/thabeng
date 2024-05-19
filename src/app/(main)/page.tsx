@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { MdFastfood as FastFood, MdCelebration, MdHotel } from 'react-icons/md';
 import { Josefin_Sans } from 'next/font/google';
+import { Button } from '@nextui-org/react';
 
 const josefinSans = Josefin_Sans({ subsets: ['latin'] });
 
@@ -18,15 +19,22 @@ export default function Home() {
           'flex flex-col justify-center items-center'
         )}
       >
-        <div className='h-56 flex flex-col items-center dark-overlay px-20 py-5'>
+        <div className='h-56 text-center dark-overlay px-20 py-5'>
           <h1 className={cn(josefinSans.className, 'text-6xl font-bold')}>
             Thabeng Hotel
           </h1>
-          <article>
-            <p className='mt-4'>
+          <article className='mt-6 flex flex-col items-center gap-2'>
+            <p>
               Welcome to Thabeng Hotel, where you can find the best services for
               your stay.
             </p>
+            <Button
+              variant='bordered'
+              color='primary'
+              className='text-white border-white border-1 px-8'
+            >
+              Click Me
+            </Button>
           </article>
         </div>
         <nav
