@@ -1,8 +1,16 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { MdFastfood as FastFood, MdCelebration, MdHotel } from 'react-icons/md';
+import {
+  MdFastfood as FastFood,
+  MdArrowRight,
+  MdArrowRightAlt,
+  MdCelebration,
+  MdHotel,
+  MdOutlineArrowRight,
+} from 'react-icons/md';
 import { Josefin_Sans } from 'next/font/google';
 import { Button } from '@nextui-org/react';
+import { IconArrowNarrowRight } from '@tabler/icons-react';
 
 const josefinSans = Josefin_Sans({ subsets: ['latin'] });
 
@@ -19,11 +27,16 @@ export default function Home() {
           'flex flex-col justify-center items-center'
         )}
       >
-        <div className='h-56 text-center dark-overlay px-20 py-5'>
+        <div
+          className={cn(
+            'h-56 text-center dark-overlay px-20 py-5',
+            'flex flex-col justify-between'
+          )}
+        >
           <h1 className={cn(josefinSans.className, 'text-7xl font-bold')}>
             Thabeng Hotel
           </h1>
-          <article className='mt-6 flex flex-col items-center gap-2'>
+          <article className='flex flex-col items-center gap-2'>
             <p>
               Welcome to Thabeng Hotel, where you can find the best services for
               your stay.
@@ -33,6 +46,7 @@ export default function Home() {
               color='primary'
               radius='sm'
               className='text-white border-white border-1 px-8'
+              endContent={<IconArrowNarrowRight />}
             >
               Click Me
             </Button>
