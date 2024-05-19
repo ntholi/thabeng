@@ -20,7 +20,7 @@ export default function Home() {
         )}
       >
         <div className='h-56 text-center dark-overlay px-20 py-5'>
-          <h1 className={cn(josefinSans.className, 'text-6xl font-bold')}>
+          <h1 className={cn(josefinSans.className, 'text-7xl font-bold')}>
             Thabeng Hotel
           </h1>
           <article className='mt-6 flex flex-col items-center gap-2'>
@@ -31,6 +31,7 @@ export default function Home() {
             <Button
               variant='bordered'
               color='primary'
+              radius='sm'
               className='text-white border-white border-1 px-8'
             >
               Click Me
