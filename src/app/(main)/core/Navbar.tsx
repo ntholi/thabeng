@@ -44,13 +44,15 @@ export default function Navbar() {
           className='sm:hidden'
         />
         <NavbarBrand>
-          <Image
-            src={'/images/logo.png'}
-            width={50}
-            height={50}
-            className='h-10 w-auto'
-            alt={'Thabeng Hotel'}
-          />
+          <NextLink href='/'>
+            <Image
+              src={'/images/logo.png'}
+              width={50}
+              height={50}
+              className='h-10 w-auto'
+              alt={'Thabeng Hotel'}
+            />
+          </NextLink>
         </NavbarBrand>
       </NavbarContent>
 
