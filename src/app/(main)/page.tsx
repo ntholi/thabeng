@@ -11,6 +11,7 @@ import {
 import { Josefin_Sans } from 'next/font/google';
 import { Button } from '@nextui-org/react';
 import { IconArrowNarrowRight } from '@tabler/icons-react';
+import Hotel from './home/hotel';
 
 const josefinSans = Josefin_Sans({ subsets: ['latin'] });
 
@@ -23,7 +24,7 @@ export default function Home() {
           backgroundImage: `url(${banner})`,
         }}
         className={cn(
-          'absolute h-[100vh] w-[100vw] top-0 bg-black/15 bg-cover bg-center text-white bg-blend-overlay',
+          'h-screen w-[100vw] top-0 bg-black/15 bg-cover bg-center text-white bg-blend-overlay',
           'flex flex-col justify-center items-center'
         )}
       >
@@ -70,6 +71,7 @@ export default function Home() {
           <ClickableCard icon={MdCelebration} text='Events' />
         </nav>
       </header>
+      <Hotel />
     </main>
   );
 }
