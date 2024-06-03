@@ -111,7 +111,7 @@ function AmenitiesTable({ amenities }: { amenities: Amenities[] }) {
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>
-          {amenities.map((amenity) => (
+          {amenities?.map((amenity) => (
             <Table.Tr>
               <Table.Td>{amenity.name}</Table.Td>
               <Table.Td>{amenity.count}</Table.Td>

@@ -1,5 +1,7 @@
 import { roomRepository } from '@/app/(admin)/admin/rooms/repository';
 import React from 'react';
+import Container from '../core/Container';
+import { cn } from '@/lib/utils';
 
 type Props = {
   className?: string;
@@ -8,7 +10,7 @@ type Props = {
 export default async function Hotel({ className }: Props) {
   const rooms = await roomRepository.getAll();
   return (
-    <section className={className}>
+    <Container as={'section'} className={cn('h-dvh', className)}>
       <div className='col-span-12 h-1/2 my-10'>
         <h1 className=' text-4xl font-bold text-center'>Thabeng Hotel</h1>
       </div>
@@ -17,7 +19,7 @@ export default async function Hotel({ className }: Props) {
           {rooms.map((room) => (
             <div
               key={room.id}
-              className='col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3'
+              className='col-span-12 sm:col-span-6 md:col-span-4'
             >
               <img
                 src={room.images[0]}
@@ -31,6 +33,6 @@ export default async function Hotel({ className }: Props) {
           ))}
         </div>
       </div>
-    </section>
+    </Container>
   );
 }
