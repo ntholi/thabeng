@@ -16,6 +16,7 @@ import { notFound } from 'next/navigation';
 import Container from '../../core/Container';
 import ImageViewer from './ImageViewer';
 import { MdPhone, MdWhatsapp } from 'react-icons/md';
+import React from 'react';
 
 type Props = {
   params: {
@@ -36,12 +37,12 @@ export default async function PropertyPage({ params: { id } }: Props) {
         <div className='col-span-12 md:col-span-8'>
           <section className='mt-3 flex gap-5'>
             {property.amenities.map((amenity, index) => (
-              <>
+              <React.Fragment key={index}>
                 <Feature label={amenity.name} value={amenity.count} />
                 {index < property.amenities.length - 1 && (
                   <span className='hidden sm:block'>·</span>
                 )}
-              </>
+              </React.Fragment>
             ))}
           </section>
           <Divider className='my-3' />
