@@ -15,6 +15,7 @@ import NextLink from 'next/link';
 import { notFound } from 'next/navigation';
 import Container from '../../core/Container';
 import ImageViewer from './ImageViewer';
+import { MdPhone, MdWhatsapp } from 'react-icons/md';
 
 type Props = {
   params: {
@@ -48,24 +49,18 @@ export default async function PropertyPage({ params: { id } }: Props) {
         </div>
         <Card className='col-span-12 md:col-span-4' radius='sm' shadow='sm'>
           <CardHeader>
-            <Link color='foreground'>xxx</Link>
+            <Link color='foreground'>Booking Details</Link>
           </CardHeader>
           <Divider />
-          <CardBody>
-            <p className='flex justify-between text-sm text-foreground/80'>
-              <span className='font-semibold'>Contact Person</span>
-              <Link
-                size='sm'
-                className='text-gray-500'
-                href={`#`}
-                as={NextLink}
-              >
-                The Name
-              </Link>
-            </p>
-            <div className='mt-5 flex items-start justify-between'>
-              <Button>Click me</Button>
-            </div>
+          <CardBody className='flex flex-col gap-3'>
+            <Link href={`tel:+26658123456`}>
+              <MdPhone size={'1rem'} className='mr-3 text-black' />
+              <span>(+266) 58123456</span>
+            </Link>
+            <Link href={`https://wa.me/+26658123456`}>
+              <MdWhatsapp size={'1rem'} className='mr-3 text-green-500' />
+              <span>WhatsApp</span>
+            </Link>
           </CardBody>
         </Card>
       </main>
@@ -81,7 +76,7 @@ type FeatureProp = {
 function Feature({ label, value }: FeatureProp) {
   if (value === 0) return null;
   return (
-    <div className='flex items-center gap-1'>
+    <div className='flex items-center gap-3'>
       <p className='text-sm font-semibold text-foreground/90'>{value}</p>
       <p className='text-sm text-foreground/80'>{label}</p>
     </div>
