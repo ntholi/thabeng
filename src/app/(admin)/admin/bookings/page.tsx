@@ -1,7 +1,13 @@
 'use client';
 
-import { DetailsView, FieldView, ResourcePage } from '@/app/(admin)/admin-core';
-import { dateTime } from '@/lib/utils/format';
+import {
+  DetailsView,
+  FieldView,
+  ReferenceView,
+  ResourcePage,
+} from '@/app/(admin)/admin-core';
+import { date } from '@/lib/utils/format';
+import { Card, Stack, Title } from '@mantine/core';
 import { Booking } from './Booking';
 import { bookingRepository } from './repository';
 
@@ -11,7 +17,10 @@ export default function BookingPage() {
       resourceLabel='Bookings'
       repository={bookingRepository}
       details={BookingDetails}
-      navLinkProps={(it) => ({ label: `${it.user.name}` })}
+      navLinkProps={(it) => ({
+        label: `${it.user.name}`,
+        description: `${it.room.name} - ${date(it.checkIn)}`,
+      })}
     />
   );
 }
@@ -19,8 +28,23 @@ export default function BookingPage() {
 function BookingDetails({ item }: { item: Booking }) {
   return (
     <DetailsView>
-      <FieldView label='Name' value={item.user.name} />
-      <FieldView label='Date' value={dateTime(item.createdAt)} />
+      <ReferenceView
+        label='Room'
+        reference={'rooms'}
+        referenceKey={item.room.id}
+        value={item.room.name}
+      />
+      <FieldView label='Check In' value={date(item.checkIn)} />
+      <Card withBorder>
+        <Title order={2} fw={'lighter'}>
+          Guest Details
+        </Title>
+        <Stack mt={'xl'}>
+          <FieldView label='Name' value={item.user.name} />
+          <FieldView label='Phone' value={item.user.phoneNumber} />
+          <FieldView label='Email' value={item.user.email} />
+        </Stack>
+      </Card>
     </DetailsView>
   );
 }
