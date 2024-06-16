@@ -1,12 +1,12 @@
 import { cn } from '@/lib/utils';
 import { Button } from '@nextui-org/react';
 import { IconArrowRight } from '@tabler/icons-react';
-import { Josefin_Sans } from 'next/font/google';
+import { Salsa } from 'next/font/google';
 import Link from 'next/link';
 import { MdFastfood as FastFood, MdCelebration, MdHotel } from 'react-icons/md';
 import Hotel from './home/hotel';
 
-const josefinSans = Josefin_Sans({ subsets: ['latin'] });
+const font = Salsa({ weight: '400', subsets: ['latin'] });
 
 export default function Home() {
   const banner = '/images/test-image.jpg';
@@ -27,12 +27,7 @@ export default function Home() {
             'flex flex-col justify-between'
           )}
         >
-          <h1
-            className={cn(
-              josefinSans.className,
-              'text-5xl sm:text-7xl font-bold'
-            )}
-          >
+          <h1 className={cn(font.className, 'text-5xl sm:text-7xl font-bold')}>
             Thabeng Hotel
           </h1>
           <article className='flex flex-col items-center gap-5 my-5'>

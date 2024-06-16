@@ -1,8 +1,8 @@
 'use client';
+import { Room } from '@/app/(admin)/admin/rooms/Room';
 import { roomRepository } from '@/app/(admin)/admin/rooms/repository';
-import React, { useEffect } from 'react';
-import Container from '../core/Container';
 import { cn } from '@/lib/utils';
+import { formatMoney } from '@/lib/utils/format';
 import {
   Card,
   CardBody,
@@ -11,13 +11,16 @@ import {
   Link,
   Spinner,
 } from '@nextui-org/react';
+import { Salsa } from 'next/font/google';
 import NextImage from 'next/image';
-import { formatMoney } from '@/lib/utils/format';
-import { Room } from '@/app/(admin)/admin/rooms/Room';
+import React, { useEffect } from 'react';
+import Container from '../core/Container';
 
 type Props = {
   className?: string;
 };
+
+const font = Salsa({ weight: '400', subsets: ['latin'] });
 
 export default function Hotel({ className }: Props) {
   const [rooms, setRooms] = React.useState<Room[]>([]);
@@ -38,10 +41,15 @@ export default function Hotel({ className }: Props) {
       >
         <div className='col-span-12 my-8'>
           <p className='text-center text-xs text-foreground-400 uppercase'>
-            List of all rooms available
+            Our rooms
           </p>
-          <h1 className=' text-4xl font-bold text-center text-blue-900'>
-            Thabeng Hotel
+          <h1
+            className={cn(
+              font.className,
+              'text-6xl font-bold text-center text-blue-900'
+            )}
+          >
+            Hotel
           </h1>
         </div>
         {loading ? (
