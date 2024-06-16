@@ -8,6 +8,7 @@ import { Notifications } from '@mantine/notifications';
 import React, { Suspense } from 'react';
 import { ModalsProvider } from '@mantine/modals';
 import SessionProvider from './auth/SessionProvider';
+import UnseenBookingsProvider from './admin/bookings/UnseenBookingsProvider';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const theme = createTheme({
@@ -21,7 +22,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       <MantineProvider defaultColorScheme='auto' theme={theme}>
         <Notifications />
         <ModalsProvider>
-          <SessionProvider>{children}</SessionProvider>
+          <SessionProvider>
+            <UnseenBookingsProvider>{children}</UnseenBookingsProvider>
+          </SessionProvider>
         </ModalsProvider>
       </MantineProvider>
     </Suspense>
