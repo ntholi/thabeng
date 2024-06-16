@@ -14,7 +14,7 @@ type Props = {
 export default async function Hotel({ className }: Props) {
   const rooms = await roomRepository.getAll();
   return (
-    <Container as={'section'} className={cn('h-dvh', className)}>
+    <Container as={'section'} id='hotel' className={cn('h-dvh', className)}>
       <div className='col-span-12  my-10'>
         <h1 className=' text-4xl font-bold text-center'>Thabeng Hotel</h1>
       </div>

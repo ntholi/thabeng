@@ -58,7 +58,7 @@ export default function Home() {
           'backdrop-blur-sm bg-white/90'
         )}
       >
-        <ClickableCard icon={MdHotel} text='Hotel' />
+        <ClickableCard icon={MdHotel} text='Hotel' href='#hotel' />
         <ClickableCard icon={FastFood} text='Restaurant' />
         <ClickableCard icon={MdCelebration} text='Events' />
       </nav>
@@ -70,11 +70,18 @@ export default function Home() {
 type ClickableCardProps = {
   icon: React.ElementType;
   text: string;
+  href?: string;
 };
 
-function ClickableCard({ icon: Icon, text }: ClickableCardProps) {
+function ClickableCard({ icon: Icon, text, href = '#' }: ClickableCardProps) {
   return (
-    <Button className='bg-blue-900/80' color='primary' size='lg'>
+    <Button
+      as={Link}
+      href={href}
+      className='bg-blue-900/80'
+      color='primary'
+      size='lg'
+    >
       <Icon className='text-xl sm:text-xl hidden sm:block' />
       <span className='text-xs sm:text-sm'>{text}</span>
     </Button>
