@@ -23,16 +23,16 @@ export default function Navbar() {
   const menuItems = [
     { label: 'Home', href: '/' },
     {
-      label: 'Restaurant',
-      href: '#',
+      label: 'Hotel',
+      href: '/#hotel',
     },
     {
-      label: 'Hotel',
-      href: '#',
+      label: 'Restaurant',
+      href: '/#restaurant',
     },
     {
       label: 'Events',
-      href: '#',
+      href: '/events',
     },
   ];
 
