@@ -8,6 +8,12 @@ const nextConfig = {
         port: '',
         pathname: '/v0/b/lekaanything.appspot.com/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '/v0/b/thabeng-hotel.appspot.com/**',
+      },
     ],
   },
 };
