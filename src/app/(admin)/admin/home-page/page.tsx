@@ -73,6 +73,7 @@ export default function LandingPage() {
       />
       <Button
         color='dark'
+        mt={'lg'}
         fullWidth
         onClick={handleSave}
         variant={colorScheme === 'dark' ? 'default' : 'filled'}
