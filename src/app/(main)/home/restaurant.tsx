@@ -35,7 +35,7 @@ export default function Restaurant({ className }: Props) {
   }, []);
 
   return (
-    <div id='restaurant' className='min-h-dvh bg-gray-50'>
+    <div id='restaurant' className='min-h-dvh pt-16'>
       <Container
         as={'section'}
         width='lg'
@@ -84,7 +84,7 @@ function MenuItemCard({ menuitem }: { menuitem: MenuItem }) {
       </CardBody>
       <CardFooter className='flex-col'>
         <h3>{menuitem.name}</h3>
-        <p className='text-sm text-center mt-2 text-foreground-400'>
+        <p className='text-sm text-center mt-2 text-foreground-400 hidden sm:block'>
           {menuitem.description}
         </p>
         <p className='text-center mt-2 text-sm font-bold text-green-500'>

@@ -34,7 +34,7 @@ export default function Hotel({ className }: Props) {
   }, []);
 
   return (
-    <div id='hotel' className='min-h-dvh bg-gray-50 py-20'>
+    <div id='hotel' className='min-h-dvh pt-20'>
       <Container
         as={'section'}
         className={cn('bg-white min-h-[80dvh] rounded-sm', className)}

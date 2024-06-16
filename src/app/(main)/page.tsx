@@ -1,11 +1,12 @@
 import { cn } from '@/lib/utils';
-import { Button } from '@nextui-org/react';
+import { Button, Divider } from '@nextui-org/react';
 import { IconArrowRight } from '@tabler/icons-react';
 import { Salsa } from 'next/font/google';
 import Link from 'next/link';
 import { MdFastfood as FastFood, MdCelebration, MdHotel } from 'react-icons/md';
 import Hotel from './home/hotel';
 import Restaurant from './home/restaurant';
+import Container from './core/Container';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
@@ -58,8 +59,14 @@ export default function Home() {
         <ClickableCard icon={FastFood} text='Restaurant' href='#restaurant' />
         <ClickableCard icon={MdCelebration} text='Events' />
       </nav>
-      <Hotel />
-      <Restaurant />
+
+      <div className='bg-gray-50'>
+        <Hotel />
+        <Container className='px-0 sm:px-0 py-0'>
+          <Divider />
+        </Container>
+        <Restaurant />
+      </div>
     </main>
   );
 }
