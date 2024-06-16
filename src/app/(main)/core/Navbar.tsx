@@ -34,6 +34,10 @@ export default function Navbar() {
       label: 'Events',
       href: '/events',
     },
+    {
+      label: 'Posts',
+      href: '/posts',
+    },
   ];
 
   return (

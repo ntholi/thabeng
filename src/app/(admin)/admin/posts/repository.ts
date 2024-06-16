@@ -1,5 +1,6 @@
 import {
   collection,
+  limit,
   orderBy,
   query,
   serverTimestamp,
@@ -27,35 +28,14 @@ class PostRepository extends FirebaseRepository<Post> {
     return super.update(id, { ...resource, slug });
   }
 
-  async getPublished(): Promise<Post[]> {
-    const ref = collection(db, this.collectionName);
+  async latestPosts() {
     const q = query(
-      ref,
+      collection(db, this.collectionName),
+      orderBy('createdAt', 'desc'),
       where('published', '==', true),
-      orderBy('publishedAt', 'desc'),
+      limit(17)
     );
-    return await this.getDocs(q);
-  }
-
-  async getByAuthor(authorId: string): Promise<Post[]> {
-    const ref = collection(db, this.collectionName);
-    const q = query(
-      ref,
-      where('author.id', '==', authorId),
-      orderBy('publishedAt', 'desc'),
-    );
-    return await this.getDocs(q);
-  }
-
-  async getByCategory(categoryId: string): Promise<Post[]> {
-    console.log('categoryId', categoryId);
-    const ref = collection(db, this.collectionName);
-    const q = query(
-      ref,
-      where('category.id', '==', categoryId),
-      orderBy('publishedAt', 'desc'),
-    );
-    return await this.getDocs(q);
+    return super.getDocs(q);
   }
 
   async updatePublishStatus(id: string, published: boolean) {
