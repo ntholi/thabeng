@@ -1,10 +1,18 @@
 import { roomRepository } from '@/app/(admin)/admin/rooms/repository';
-import { Card, CardBody, CardHeader, Divider, Link } from '@nextui-org/react';
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Divider,
+  Link,
+} from '@nextui-org/react';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { MdPhone, MdWhatsapp } from 'react-icons/md';
 import Container from '../../core/Container';
 import ImageViewer from './ImageViewer';
+import { IconCheck, IconCheckbox, IconHandClick } from '@tabler/icons-react';
 
 type Props = {
   params: {
@@ -20,36 +28,33 @@ export default async function PropertyPage({ params: { id } }: Props) {
   return (
     <Container>
       <ImageViewer images={property.images} />
-      <h1 className='mt-5 text-3xl font-bold'>{property.name}</h1>
-      <main className='grid grid-cols-12 gap-5'>
+      <main className='mt-5 grid grid-cols-12 gap-5 sm:gap-10 sm:mt-10'>
         <div className='col-span-12 md:col-span-8'>
-          <section className='mt-3 flex gap-5'>
-            {property.amenities.map((amenity, index) => (
-              <React.Fragment key={index}>
-                <Feature label={amenity.name} value={amenity.count} />
-                {index < property.amenities.length - 1 && (
-                  <span className='hidden sm:block'>·</span>
-                )}
-              </React.Fragment>
-            ))}
-          </section>
+          <header className='flex justify-between'>
+            <h1 className='text-3xl font-bold'>{property.name}</h1>
+            <Button
+              radius='sm'
+              variant='shadow'
+              endContent={<IconHandClick size={'1.2rem'} />}
+              color='primary'
+            >
+              Book Now
+            </Button>
+          </header>
           <Divider className='my-3' />
           <p className='text-foreground/80'>{property.description}</p>
         </div>
         <Card className='col-span-12 md:col-span-4' radius='sm' shadow='sm'>
           <CardHeader>
-            <Link color='foreground'>Booking Details</Link>
+            <Link color='foreground'>Amenities</Link>
           </CardHeader>
           <Divider />
           <CardBody className='flex flex-col gap-3'>
-            <Link href={`tel:+26658123456`}>
-              <MdPhone size={'1rem'} className='mr-3 text-black' />
-              <span>(+266) 58123456</span>
-            </Link>
-            <Link href={`https://wa.me/+26658123456`}>
-              <MdWhatsapp size={'1rem'} className='mr-3 text-green-500' />
-              <span>WhatsApp</span>
-            </Link>
+            {property.amenities.map((amenity, index) => (
+              <React.Fragment key={index}>
+                <Feature label={amenity.name} count={amenity.count} />
+              </React.Fragment>
+            ))}
           </CardBody>
         </Card>
       </main>
@@ -59,15 +64,15 @@ export default async function PropertyPage({ params: { id } }: Props) {
 
 type FeatureProp = {
   label: string;
-  value: number;
+  count: number;
 };
 
-function Feature({ label, value }: FeatureProp) {
-  if (value === 0) return null;
+function Feature({ label, count }: FeatureProp) {
   return (
     <div className='flex items-center gap-3'>
-      <p className='text-sm font-semibold text-foreground/90'>{value}</p>
-      <p className='text-sm text-foreground/80'>{label}</p>
+      <IconCheckbox className='text-blue-900' size={'1rem'} />
+      <p className='text-sm font-semibold text-foreground/90'>{label}</p>
+      {count > 1 && <p className='text-sm text-foreground/80'> (x {count})</p>}
     </div>
   );
 }
