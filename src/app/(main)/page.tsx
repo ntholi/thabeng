@@ -61,7 +61,7 @@ export default function Home() {
         >
           <ClickableCard icon={MdHotel} text='Hotel' href='#hotel' />
           <ClickableCard icon={FastFood} text='Restaurant' href='#restaurant' />
-          <ClickableCard icon={MdCelebration} text='Events' />
+          <ClickableCard icon={MdCelebration} text='Events' href='/events' />
         </nav>
 
         <div className='bg-gray-50'>
