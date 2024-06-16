@@ -77,6 +77,14 @@ export default function Navigation() {
           leftSection={<IconCalendarEvent size='1.1rem' />}
           rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
+        <NavLink
+          label='About Us'
+          component={Link}
+          active={pathname.startsWith('/admin/about-us')}
+          href={'/admin/about-us'}
+          leftSection={<IconCalendarEvent size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
+        />
       </AppShell.Section>
       <AppShell.Section>
         <Divider mb='md' />
