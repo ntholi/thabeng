@@ -20,7 +20,7 @@ type Props = {
 
 export default function AmenitiesInput({ form }: Props) {
   const [name, setName] = React.useState('');
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = React.useState(1);
 
   const rows = form.values.amenities?.map(
     (amenity: Amenities, index: number) => (
@@ -73,7 +73,7 @@ export default function AmenitiesInput({ form }: Props) {
                 { name, count },
               ]);
               setName('');
-              setCount(0);
+              setCount(1);
             }
           }}
         >
