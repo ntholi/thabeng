@@ -31,13 +31,18 @@ export default function Hotel({ className }: Props) {
   }, []);
 
   return (
-    <div id='hotel' className='min-h-dvh bg-gray-100 py-20'>
+    <div id='hotel' className='min-h-dvh bg-gray-50 py-20'>
       <Container
         as={'section'}
-        className={cn('bg-white min-h-[80dvh]', className)}
+        className={cn('bg-white min-h-[80dvh] rounded-sm', className)}
       >
-        <div className='col-span-12  my-10'>
-          <h1 className=' text-4xl font-bold text-center'>Thabeng Hotel</h1>
+        <div className='col-span-12 my-8'>
+          <p className='text-center text-xs text-foreground-400 uppercase'>
+            List of all rooms available
+          </p>
+          <h1 className=' text-4xl font-bold text-center text-blue-900'>
+            Thabeng Hotel
+          </h1>
         </div>
         {loading ? (
           <div className='flex justify-center mt-10'>
