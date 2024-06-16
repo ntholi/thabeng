@@ -4,55 +4,18 @@ import { Post } from '../posts/Post';
 import { postRepository } from '../posts/repository';
 
 class HomePageRepository {
-  listenArticles(callback: (articles: Array<Post | null>) => void) {
-    const docRef = doc(db, 'pages', 'home-page');
-    return onSnapshot(docRef, async (d) => {
-      const data = d.data() as HomePage;
-      const articles = new Array<Post | null>();
-      for (const id of data.articleIds) {
-        if (id) {
-          const articleDoc = await getDoc(doc(db, 'posts', id));
-          articles.push({ id: articleDoc.id, ...articleDoc.data() } as Post);
-        } else articles.push(null);
-      }
-      callback(articles);
-    });
+  async setPost(post: HomePage) {
+    await setDoc(doc(db, 'home-page', 'default'), post);
   }
-  async articles(): Promise<Array<Post | null>> {
-    const res = (
-      await getDoc(doc(db, 'pages', 'home-page'))
-    ).data() as HomePage;
 
-    const data = new Array<Post | null>();
-    for (const id of res.articleIds) {
-      if (id) {
-        const articleDoc = await getDoc(doc(db, 'posts', id));
-        data.push({ id: articleDoc.id, ...articleDoc.data() } as Post);
-      } else data.push(null);
+  async getPost() {
+    const docRef = doc(db, 'home-page', 'default');
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return docSnap.data() as HomePage;
+    } else {
+      return null;
     }
-    return data;
-  }
-
-  async setArticle(index: number, articleId: string) {
-    const docRef = doc(db, 'pages', 'home-page');
-    const docSnap = await getDoc(docRef);
-    const data = docSnap.data() as HomePage;
-    data.articleIds[index] = articleId;
-    await setDoc(docRef, data);
-  }
-
-  async deleteArticle(index: number) {
-    const docRef = doc(db, 'pages', 'home-page');
-    const docSnap = await getDoc(docRef);
-    const data = docSnap.data() as HomePage;
-    data.articleIds[index] = null;
-    await setDoc(docRef, data);
-  }
-
-  async autoArrange() {
-    const articleIds = (await postRepository.getAll(20)).map((it) => it.id);
-    const docRef = doc(db, 'pages', 'home-page');
-    await setDoc(docRef, { articleIds });
   }
 }
 

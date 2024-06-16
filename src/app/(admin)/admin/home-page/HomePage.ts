@@ -1,3 +1,4 @@
 interface HomePage {
-  articleIds: Array<string | null>;
+  label: string;
+  value: string;
 }
