@@ -13,22 +13,22 @@ type Props = {
   };
 };
 
-export default async function PropertyPage({ params: { id } }: Props) {
-  const property = await roomRepository.get(id);
+export default async function RoomPage({ params: { id } }: Props) {
+  const room = await roomRepository.get(id);
 
-  if (!property) return notFound();
+  if (!room) return notFound();
 
   return (
     <Container>
-      <ImageViewer images={property.images} />
+      <ImageViewer images={room.images} />
       <main className='mt-5 grid grid-cols-12 gap-5 sm:gap-10 sm:mt-10'>
         <div className='col-span-12 md:col-span-8'>
           <header className='flex justify-between'>
-            <h1 className='text-3xl font-bold'>{property.name}</h1>
-            <BookingModal roomId={id} />
+            <h1 className='text-3xl font-bold'>{room.name}</h1>
+            <BookingModal roomId={id} roomName={room.name} />
           </header>
           <Divider className='my-3' />
-          <p className='text-foreground/80'>{property.description}</p>
+          <p className='text-foreground/80'>{room.description}</p>
         </div>
         <Card className='col-span-12 md:col-span-4' radius='sm' shadow='sm'>
           <CardHeader>
@@ -36,7 +36,7 @@ export default async function PropertyPage({ params: { id } }: Props) {
           </CardHeader>
           <Divider />
           <CardBody className='flex flex-col gap-3'>
-            {property.amenities.map((amenity, index) => (
+            {room.amenities.map((amenity, index) => (
               <React.Fragment key={index}>
                 <Feature label={amenity.name} count={amenity.count} />
               </React.Fragment>

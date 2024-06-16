@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState, useTransition } from 'react';
 
 import {
   Modal,
@@ -9,15 +9,51 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
+  Input,
+  DateInput,
+  DateValue,
+  DatePicker,
 } from '@nextui-org/react';
-import { IconHandClick } from '@tabler/icons-react';
+import { IconCheck, IconHandClick } from '@tabler/icons-react';
+import { bookingRepository } from '@/app/(admin)/admin/bookings/repository';
 
 type Prop = {
   roomId: string;
+  roomName: string;
 };
 
-export default function BookingModal({ roomId }: Prop) {
+export default function BookingModal({ roomId, roomName }: Prop) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [isPending, startTransition] = useTransition();
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [phoneNumber, setPhoneNumber] = React.useState('');
+  const [checkInDate, setCheckInDate] = React.useState<DateValue>();
+  const [booked, setBooked] = React.useState(false);
+  const [disableBtn, setDisableBtn] = useState(true);
+
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  useEffect(() => {
+    if (name && phoneNumber) {
+      setDisableBtn(false);
+    }
+  }, [name, email, phoneNumber]);
+
+  function handleBooking() {
+    startTransition(async () => {
+      await bookingRepository.create({
+        room: { id: roomId, name: roomName },
+        user: {
+          name,
+          email,
+          phoneNumber,
+        },
+        checkIn: checkInDate?.toDate(timeZone) || new Date(),
+      });
+      setBooked(true);
+    });
+  }
 
   return (
     <>
@@ -36,34 +72,54 @@ export default function BookingModal({ roomId }: Prop) {
           {(onClose) => (
             <>
               <ModalHeader className='flex flex-col gap-1'>
-                Modal Title
+                Booking ({roomName})
               </ModalHeader>
               <ModalBody>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                </p>
-                <p>
-                  Magna exercitation reprehenderit magna aute tempor cupidatat
-                  consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
-                  incididunt cillum quis. Velit duis sit officia eiusmod Lorem
-                  aliqua enim laboris do dolor eiusmod. Et mollit incididunt
-                  nisi consectetur esse laborum eiusmod pariatur proident Lorem
-                  eiusmod et. Culpa deserunt nostrud ad veniam.
-                </p>
+                <Input
+                  label='Full Name'
+                  variant='bordered'
+                  value={name}
+                  onValueChange={setName}
+                />
+                <Input
+                  type='email'
+                  label='Email'
+                  variant='bordered'
+                  value={email}
+                  onValueChange={setEmail}
+                />
+                <Input
+                  type='tel'
+                  variant='bordered'
+                  label='Phone Number'
+                  value={phoneNumber}
+                  onValueChange={setPhoneNumber}
+                />
+                <DatePicker
+                  variant='bordered'
+                  label={'check-in Date'}
+                  value={checkInDate}
+                  onChange={setCheckInDate}
+                />
               </ModalBody>
               <ModalFooter>
                 <Button color='danger' variant='light' onPress={onClose}>
                   Close
                 </Button>
-                <Button color='primary' onPress={onClose}>
-                  Action
+                <Button
+                  color='primary'
+                  onPress={handleBooking}
+                  isLoading={isPending}
+                  isDisabled={booked || disableBtn}
+                  endContent={
+                    booked ? (
+                      <IconCheck size={'1rem'} />
+                    ) : (
+                      <IconHandClick size={'1rem'} />
+                    )
+                  }
+                >
+                  {booked ? 'Booked' : 'Book'}
                 </Button>
               </ModalFooter>
             </>
