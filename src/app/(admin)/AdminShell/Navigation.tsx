@@ -17,10 +17,12 @@ import { signOut } from 'firebase/auth';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useSession } from '../auth/SessionProvider';
+import NotificationIndicator from './NotificationIndicator';
+import { useUnseenBookings } from '../admin/bookings/UnseenBookingsProvider';
 
 export default function Navigation() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const unseenBookings = useUnseenBookings();
 
   return (
     <AppShell.Navbar p='xs'>
@@ -41,14 +43,16 @@ export default function Navigation() {
           leftSection={<IconNews size='1.1rem' />}
           rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
-        <NavLink
-          label='Bookings'
-          component={Link}
-          active={pathname.startsWith('/admin/bookings')}
-          href={'/admin/bookings'}
-          leftSection={<IconBrandBooking size='1.1rem' />}
-          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
-        />
+        <NotificationIndicator label={unseenBookings}>
+          <NavLink
+            label='Bookings'
+            component={Link}
+            active={pathname.startsWith('/admin/bookings')}
+            href={'/admin/bookings'}
+            leftSection={<IconBrandBooking size='1.1rem' />}
+            rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
+          />
+        </NotificationIndicator>
         <NavLink
           label='Rooms'
           component={Link}

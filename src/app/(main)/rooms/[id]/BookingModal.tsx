@@ -81,19 +81,21 @@ export default function BookingModal({ roomId, roomName }: Prop) {
                   value={name}
                   onValueChange={setName}
                 />
-                <Input
-                  type='email'
-                  label='Email'
-                  variant='bordered'
-                  value={email}
-                  onValueChange={setEmail}
-                />
+
                 <Input
                   type='tel'
                   variant='bordered'
                   label='Phone Number'
                   value={phoneNumber}
                   onValueChange={setPhoneNumber}
+                />
+                <Input
+                  type='email'
+                  label='Email'
+                  description='Optional'
+                  variant='bordered'
+                  value={email}
+                  onValueChange={setEmail}
                 />
                 <DatePicker
                   variant='bordered'

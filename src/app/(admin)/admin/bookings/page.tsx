@@ -8,6 +8,7 @@ import {
 } from '@/app/(admin)/admin-core';
 import { date } from '@/lib/utils/format';
 import { Card, Stack, Title } from '@mantine/core';
+import { IconCheck, IconExclamationCircle } from '@tabler/icons-react';
 import { Booking } from './Booking';
 import { bookingRepository } from './repository';
 
@@ -20,12 +21,14 @@ export default function BookingPage() {
       navLinkProps={(it) => ({
         label: `${it.user.name}`,
         description: `${it.room.name} - ${date(it.checkIn)}`,
+        rightSection: <StatusIcon seen={it.seen} />,
       })}
     />
   );
 }
 
 function BookingDetails({ item }: { item: Booking }) {
+  bookingRepository.markAsSeen(item.id);
   return (
     <DetailsView>
       <ReferenceView
@@ -47,4 +50,10 @@ function BookingDetails({ item }: { item: Booking }) {
       </Card>
     </DetailsView>
   );
+}
+
+function StatusIcon({ seen }: { seen?: boolean }) {
+  const size = '1.2rem';
+
+  return !seen ? <IconExclamationCircle color='orange' size={size} /> : null;
 }

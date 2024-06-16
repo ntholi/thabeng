@@ -11,4 +11,5 @@ export interface Booking extends Resource {
     phoneNumber: string;
   };
   checkIn: Date;
+  seen?: boolean;
 }
