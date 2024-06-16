@@ -1,8 +1,16 @@
+'use client';
 import { roomRepository } from '@/app/(admin)/admin/rooms/repository';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from '../core/Container';
 import { cn } from '@/lib/utils';
-import { Card, CardBody, CardHeader, Image, Link } from '@nextui-org/react';
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Image,
+  Link,
+  Spinner,
+} from '@nextui-org/react';
 import NextImage from 'next/image';
 import { formatMoney } from '@/lib/utils/format';
 import { Room } from '@/app/(admin)/admin/rooms/Room';
@@ -11,8 +19,17 @@ type Props = {
   className?: string;
 };
 
-export default async function Hotel({ className }: Props) {
-  const rooms = await roomRepository.getAll();
+export default function Hotel({ className }: Props) {
+  const [rooms, setRooms] = React.useState<Room[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  useEffect(() => {
+    roomRepository
+      .getAll()
+      .then(setRooms)
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <div id='hotel' className='min-h-dvh bg-gray-100 py-20'>
       <Container
@@ -22,13 +39,19 @@ export default async function Hotel({ className }: Props) {
         <div className='col-span-12  my-10'>
           <h1 className=' text-4xl font-bold text-center'>Thabeng Hotel</h1>
         </div>
-        <div className='col-span-12'>
-          <div className='grid grid-cols-12 gap-5'>
-            {rooms.map((room) => (
-              <RoomCard key={room.id} room={room} />
-            ))}
+        {loading ? (
+          <div className='flex justify-center mt-10'>
+            <Spinner size='lg' />
           </div>
-        </div>
+        ) : (
+          <div className='col-span-12'>
+            <div className='grid grid-cols-12 gap-5'>
+              {rooms.map((room) => (
+                <RoomCard key={room.id} room={room} />
+              ))}
+            </div>
+          </div>
+        )}
       </Container>
     </div>
   );
@@ -49,7 +72,7 @@ function RoomCard({ room }: { room: Room }) {
       <CardBody className='overflow-visible py-2'>
         <Image
           alt='Card background'
-          className='object-cover rounded-xl h-full w-full'
+          className='object-cover rounded-xl h-48 sm:h-52 w-full'
           src={room.images[0]}
           as={NextImage}
           width={500}
