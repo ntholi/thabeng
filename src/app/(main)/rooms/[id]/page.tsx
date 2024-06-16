@@ -1,18 +1,11 @@
 import { roomRepository } from '@/app/(admin)/admin/rooms/repository';
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Divider,
-  Link,
-} from '@nextui-org/react';
+import { Card, CardBody, CardHeader, Divider, Link } from '@nextui-org/react';
+import { IconCheckbox } from '@tabler/icons-react';
 import { notFound } from 'next/navigation';
 import React from 'react';
-import { MdPhone, MdWhatsapp } from 'react-icons/md';
 import Container from '../../core/Container';
+import BookingModal from './BookingModal';
 import ImageViewer from './ImageViewer';
-import { IconCheck, IconCheckbox, IconHandClick } from '@tabler/icons-react';
 
 type Props = {
   params: {
@@ -32,14 +25,7 @@ export default async function PropertyPage({ params: { id } }: Props) {
         <div className='col-span-12 md:col-span-8'>
           <header className='flex justify-between'>
             <h1 className='text-3xl font-bold'>{property.name}</h1>
-            <Button
-              radius='sm'
-              variant='shadow'
-              endContent={<IconHandClick size={'1.2rem'} />}
-              color='primary'
-            >
-              Book Now
-            </Button>
+            <BookingModal roomId={id} />
           </header>
           <Divider className='my-3' />
           <p className='text-foreground/80'>{property.description}</p>
