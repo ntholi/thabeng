@@ -10,7 +10,7 @@ import {
 } from 'react-icons/md';
 import { Josefin_Sans } from 'next/font/google';
 import { Button } from '@nextui-org/react';
-import { IconArrowNarrowRight } from '@tabler/icons-react';
+import { IconArrowNarrowRight, IconArrowRight } from '@tabler/icons-react';
 import Hotel from './home/hotel';
 
 const josefinSans = Josefin_Sans({ subsets: ['latin'] });
@@ -52,9 +52,9 @@ export default function Home() {
               color='primary'
               radius='sm'
               className='text-white border-white border-1 px-8'
-              endContent={<IconArrowNarrowRight />}
+              endContent={<IconArrowRight />}
             >
-              Click Me
+              Read More
             </Button>
           </article>
         </div>

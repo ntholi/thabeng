@@ -1,22 +1,10 @@
 import { roomRepository } from '@/app/(admin)/admin/rooms/repository';
-import {
-  Avatar,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Divider,
-  Link,
-} from '@nextui-org/react';
-import { IconMapPin } from '@tabler/icons-react';
-import { headers } from 'next/headers';
-import NextLink from 'next/link';
+import { Card, CardBody, CardHeader, Divider, Link } from '@nextui-org/react';
 import { notFound } from 'next/navigation';
+import React from 'react';
+import { MdPhone, MdWhatsapp } from 'react-icons/md';
 import Container from '../../core/Container';
 import ImageViewer from './ImageViewer';
-import { MdPhone, MdWhatsapp } from 'react-icons/md';
-import React from 'react';
 
 type Props = {
   params: {
