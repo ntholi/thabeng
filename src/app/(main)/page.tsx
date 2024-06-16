@@ -3,7 +3,12 @@ import { Button, Divider } from '@nextui-org/react';
 import { IconArrowRight } from '@tabler/icons-react';
 import { Salsa } from 'next/font/google';
 import Link from 'next/link';
-import { MdFastfood as FastFood, MdCelebration, MdHotel } from 'react-icons/md';
+import {
+  MdFastfood as FastFood,
+  MdCalendarMonth,
+  MdCelebration,
+  MdHotel,
+} from 'react-icons/md';
 import Hotel from './home/hotel';
 import Restaurant from './home/restaurant';
 import Container from './core/Container';
@@ -61,7 +66,7 @@ export default function Home() {
         >
           <ClickableCard icon={MdHotel} text='Hotel' href='#hotel' />
           <ClickableCard icon={FastFood} text='Restaurant' href='#restaurant' />
-          <ClickableCard icon={MdCelebration} text='Events' href='/events' />
+          <ClickableCard icon={MdCalendarMonth} text='Events' href='/events' />
         </nav>
 
         <div className='bg-gray-50'>
@@ -88,7 +93,7 @@ function ClickableCard({ icon: Icon, text, href = '#' }: ClickableCardProps) {
     <Button
       as={Link}
       href={href}
-      className='bg-blue-900/80'
+      className='bg-blue-900/90'
       color='primary'
       size='lg'
     >
