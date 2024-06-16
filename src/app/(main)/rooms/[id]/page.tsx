@@ -32,7 +32,7 @@ export default async function RoomPage({ params: { id } }: Props) {
         </div>
         <Card className='col-span-12 md:col-span-4' radius='sm' shadow='sm'>
           <CardHeader>
-            <Link color='foreground'>Amenities</Link>
+            <h3 color='foreground'>Amenities</h3>
           </CardHeader>
           <Divider />
           <CardBody className='flex flex-col gap-3'>
