@@ -1,3 +1,4 @@
+'use client';
 import { homePageRepository } from '@/app/(admin)/admin/home-page/repository';
 import { Button, Skeleton } from '@nextui-org/react';
 import { IconArrowRight } from '@tabler/icons-react';

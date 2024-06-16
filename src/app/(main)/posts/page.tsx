@@ -1,8 +1,7 @@
 import { Divider, cn } from '@nextui-org/react';
+import { Salsa } from 'next/font/google';
 import Container from '../core/Container';
 import Content from './Content';
-import Header from './Header';
-import { Salsa } from 'next/font/google';
 
 type Props = {
   params: {
