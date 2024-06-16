@@ -13,6 +13,7 @@ import Hotel from './home/hotel';
 import Restaurant from './home/restaurant';
 import Container from './core/Container';
 import Footer from './core/Footer';
+import LandingPost from './home/LandingPost';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
@@ -41,21 +42,7 @@ export default function Home() {
             >
               Thabeng Hotel
             </h1>
-            <article className='flex flex-col items-center gap-5 my-5'>
-              <p>
-                Welcome to Thabeng Hotel, where you can find the best services
-                for your stay.
-              </p>
-              <Button
-                variant='bordered'
-                color='primary'
-                radius='sm'
-                className='text-white border-white border-1 px-8'
-                endContent={<IconArrowRight />}
-              >
-                Read More
-              </Button>
-            </article>
+            <LandingPost />
           </div>
         </header>
         <nav
