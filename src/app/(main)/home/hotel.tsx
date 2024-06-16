@@ -14,18 +14,23 @@ type Props = {
 export default async function Hotel({ className }: Props) {
   const rooms = await roomRepository.getAll();
   return (
-    <Container as={'section'} id='hotel' className={cn('h-dvh', className)}>
-      <div className='col-span-12  my-10'>
-        <h1 className=' text-4xl font-bold text-center'>Thabeng Hotel</h1>
-      </div>
-      <div className='col-span-12'>
-        <div className='grid grid-cols-12 gap-5'>
-          {rooms.map((room) => (
-            <RoomCard key={room.id} room={room} />
-          ))}
+    <div id='hotel' className='min-h-dvh bg-gray-100 py-20'>
+      <Container
+        as={'section'}
+        className={cn('bg-white min-h-[80dvh]', className)}
+      >
+        <div className='col-span-12  my-10'>
+          <h1 className=' text-4xl font-bold text-center'>Thabeng Hotel</h1>
         </div>
-      </div>
-    </Container>
+        <div className='col-span-12'>
+          <div className='grid grid-cols-12 gap-5'>
+            {rooms.map((room) => (
+              <RoomCard key={room.id} room={room} />
+            ))}
+          </div>
+        </div>
+      </Container>
+    </div>
   );
 }
 
@@ -38,7 +43,7 @@ function RoomCard({ room }: { room: Room }) {
       href={`/rooms/${room.id}`}
     >
       <CardHeader className='pb-0 pt-2 px-4 flex-col items-start'>
-        <small className='text-default-500'>{formatMoney(room.price)}</small>
+        <small className='text-green-500'>{formatMoney(room.price)}</small>
         <h4 className='font-bold text-large'>{room.name}</h4>
       </CardHeader>
       <CardBody className='overflow-visible py-2'>
