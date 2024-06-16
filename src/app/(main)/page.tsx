@@ -1,16 +1,9 @@
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
-import {
-  MdFastfood as FastFood,
-  MdArrowRight,
-  MdArrowRightAlt,
-  MdCelebration,
-  MdHotel,
-  MdOutlineArrowRight,
-} from 'react-icons/md';
-import { Josefin_Sans } from 'next/font/google';
 import { Button } from '@nextui-org/react';
-import { IconArrowNarrowRight, IconArrowRight } from '@tabler/icons-react';
+import { IconArrowRight } from '@tabler/icons-react';
+import { Josefin_Sans } from 'next/font/google';
+import Link from 'next/link';
+import { MdFastfood as FastFood, MdCelebration, MdHotel } from 'react-icons/md';
 import Hotel from './home/hotel';
 
 const josefinSans = Josefin_Sans({ subsets: ['latin'] });
@@ -24,7 +17,7 @@ export default function Home() {
           backgroundImage: `url(${banner})`,
         }}
         className={cn(
-          'h-screen w-[100vw] top-0 bg-black/15 bg-cover bg-center text-white bg-blend-overlay',
+          'h-[75dvh] sm:h-[80vh] w-[100vw] top-0 bg-black/15 bg-cover bg-center text-white bg-blend-overlay',
           'flex flex-col justify-center items-center'
         )}
       >
@@ -58,19 +51,17 @@ export default function Home() {
             </Button>
           </article>
         </div>
-        <nav
-          className={cn(
-            'absolute w-full bottom-5',
-            'flex justify-center gap-5 px-2 py-6 sm:w-[60vw] sm:mx-auto',
-            'backdrop-blur-sm bg-white/30',
-            'rounded-t-lg sm:rounded-lg'
-          )}
-        >
-          <ClickableCard icon={MdHotel} text='Hotel' />
-          <ClickableCard icon={FastFood} text='Restaurant' />
-          <ClickableCard icon={MdCelebration} text='Events' />
-        </nav>
       </header>
+      <nav
+        className={cn(
+          'md:-mt-16 w-full flex justify-center gap-5 px-2 py-6 sm:py-10 sm:w-[60vw] sm:mx-auto',
+          'backdrop-blur-sm bg-white/90'
+        )}
+      >
+        <ClickableCard icon={MdHotel} text='Hotel' />
+        <ClickableCard icon={FastFood} text='Restaurant' />
+        <ClickableCard icon={MdCelebration} text='Events' />
+      </nav>
       <Hotel />
     </main>
   );
@@ -83,15 +74,9 @@ type ClickableCardProps = {
 
 function ClickableCard({ icon: Icon, text }: ClickableCardProps) {
   return (
-    <Link
-      href='#'
-      className={cn(
-        'rounded-md bg-blue-900/80 py-4 px-4 text-white',
-        'flex gap-2 sm:w-40 justify-center'
-      )}
-    >
+    <Button className='bg-blue-900/80' color='primary' size='lg'>
       <Icon className='text-xl sm:text-xl hidden sm:block' />
       <span className='text-xs sm:text-sm'>{text}</span>
-    </Link>
+    </Button>
   );
 }
