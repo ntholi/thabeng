@@ -5,6 +5,7 @@ import { Salsa } from 'next/font/google';
 import Link from 'next/link';
 import { MdFastfood as FastFood, MdCelebration, MdHotel } from 'react-icons/md';
 import Hotel from './home/hotel';
+import Restaurant from './home/restaurant';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
@@ -54,10 +55,11 @@ export default function Home() {
         )}
       >
         <ClickableCard icon={MdHotel} text='Hotel' href='#hotel' />
-        <ClickableCard icon={FastFood} text='Restaurant' />
+        <ClickableCard icon={FastFood} text='Restaurant' href='#restaurant' />
         <ClickableCard icon={MdCelebration} text='Events' />
       </nav>
       <Hotel />
+      <Restaurant />
     </main>
   );
 }
