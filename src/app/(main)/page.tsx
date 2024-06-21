@@ -48,7 +48,7 @@ export default function Home() {
         <nav
           className={cn(
             'md:-mt-16 w-full flex justify-center gap-5 px-2 py-6 sm:py-10 sm:w-[60vw] sm:mx-auto',
-            'backdrop-blur-sm bg-white/90'
+            'backdrop-blur-sm bg-white/80'
           )}
         >
           <ClickableCard icon={MdHotel} text='Hotel' href='#hotel' />
