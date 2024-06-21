@@ -28,7 +28,7 @@ export default function Navbar() {
     },
     {
       label: 'Restaurant',
-      href: '/#restaurant',
+      href: '/restaurant',
     },
     {
       label: 'Events',
