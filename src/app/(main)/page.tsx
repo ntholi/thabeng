@@ -1,19 +1,17 @@
 import { cn } from '@/lib/utils';
 import { Button, Divider } from '@nextui-org/react';
-import { IconArrowRight } from '@tabler/icons-react';
 import { Salsa } from 'next/font/google';
 import Link from 'next/link';
 import {
   MdFastfood as FastFood,
   MdCalendarMonth,
-  MdCelebration,
   MdHotel,
 } from 'react-icons/md';
-import Hotel from './home/hotel';
-import Restaurant from './home/restaurant';
 import Container from './core/Container';
 import Footer from './core/Footer';
 import LandingPost from './home/LandingPost';
+import Hotel from './home/hotel';
+import Restaurant from './home/Restaurant';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
