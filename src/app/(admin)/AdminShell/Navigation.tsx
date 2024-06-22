@@ -7,6 +7,7 @@ import {
   IconCalendarEvent,
   IconCategory,
   IconChevronRight,
+  IconClock,
   IconHome,
   IconLogout2,
   IconMeat,
@@ -64,7 +65,7 @@ export default function Navigation() {
           rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
         />
         <NavLink
-          label="Agencies"
+          label="Restaurant"
           leftSection={<IconToolsKitchen size="1.1rem" />}
           opened
         >
@@ -81,11 +82,11 @@ export default function Navigation() {
             component={Link}
             active={pathname.startsWith('/admin/restaurant/meal-times')}
             href={'/admin/restaurant/meal-times'}
-            leftSection={<IconWallpaper size="1.1rem" />}
+            leftSection={<IconClock size="1.1rem" />}
             rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
           />
           <NavLink
-            label="Restaurant"
+            label="Menu"
             component={Link}
             active={pathname.startsWith('/admin/restaurant/menu')}
             href={'/admin/restaurant/menu'}
