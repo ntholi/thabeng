@@ -1,19 +1,19 @@
-'use client';
-import { MenuItem } from '@/app/(admin)/admin/restaurant/MenuItem';
-import { menuitemRepository } from '@/app/(admin)/admin/restaurant/repository';
-import { cn } from '@/lib/utils';
-import { formatMoney } from '@/lib/utils/format';
-import { Card, CardBody, CardFooter, Image, Spinner } from '@nextui-org/react';
-import { Salsa } from 'next/font/google';
-import NextImage from 'next/image';
-import React, { useEffect } from 'react';
-import Container from '../core/Container';
+"use client";
+import { cn } from "@/lib/utils";
+import { formatMoney } from "@/lib/utils/format";
+import { Card, CardBody, CardFooter, Image, Spinner } from "@nextui-org/react";
+import { Salsa } from "next/font/google";
+import NextImage from "next/image";
+import React, { useEffect } from "react";
+import Container from "../core/Container";
+import { MenuItem } from "@/app/(admin)/admin/restaurant/menu/MenuItem";
+import { menuitemRepository } from "@/app/(admin)/admin/restaurant/menu/repository";
 
 type Props = {
   className?: string;
 };
 
-const font = Salsa({ weight: '400', subsets: ['latin'] });
+const font = Salsa({ weight: "400", subsets: ["latin"] });
 
 export default function Restaurant({ className }: Props) {
   const [menuitems, setMenuItems] = React.useState<MenuItem[]>([]);
@@ -27,29 +27,29 @@ export default function Restaurant({ className }: Props) {
   }, []);
 
   return (
-    <div id='restaurant' className='min-h-dvh pt-16'>
+    <div id="restaurant" className="min-h-dvh pt-16">
       <Container
-        as={'section'}
-        width='lg'
-        className={cn('bg-white min-h-[80dvh] rounded-sm', className)}
+        as={"section"}
+        width="lg"
+        className={cn("min-h-[80dvh] rounded-sm bg-white", className)}
       >
-        <div className='col-span-12 my-8'>
+        <div className="col-span-12 my-8">
           <h1
-            className={cn(font.className, 'text-6xl font-bold text-blue-900')}
+            className={cn(font.className, "text-6xl font-bold text-blue-900")}
           >
             Restaurant
           </h1>
-          <p className='text-sm text-foreground-500'>
+          <p className="text-sm text-foreground-500">
             Savor exquisite flavors with our diverse and delightful menu.
           </p>
         </div>
         {loading ? (
-          <div className='flex justify-center mt-10'>
-            <Spinner size='lg' />
+          <div className="mt-10 flex justify-center">
+            <Spinner size="lg" />
           </div>
         ) : (
-          <div className='col-span-12'>
-            <div className='grid grid-cols-12 gap-5'>
+          <div className="col-span-12">
+            <div className="grid grid-cols-12 gap-5">
               {menuitems.map((menuitem) => (
                 <MenuItemCard key={menuitem.id} menuitem={menuitem} />
               ))}
@@ -63,23 +63,23 @@ export default function Restaurant({ className }: Props) {
 
 function MenuItemCard({ menuitem }: { menuitem: MenuItem }) {
   return (
-    <Card className='py-4 col-span-6 sm:col-span-4 md:col-span-3'>
-      <CardBody className='overflow-visible py-2 items-center'>
+    <Card className="col-span-6 py-4 sm:col-span-4 md:col-span-3">
+      <CardBody className="items-center overflow-visible py-2">
         <Image
-          alt='Card background'
-          className='object-cover rounded-full size-36 border p-1'
+          alt="Card background"
+          className="size-36 rounded-full border object-cover p-1"
           src={menuitem.image}
           as={NextImage}
           width={500}
           height={500}
         />
       </CardBody>
-      <CardFooter className='flex-col'>
+      <CardFooter className="flex-col">
         <h3>{menuitem.name}</h3>
-        <p className='text-sm text-center mt-2 text-foreground-400 hidden sm:block'>
+        <p className="mt-2 hidden text-center text-sm text-foreground-400 sm:block">
           {menuitem.description}
         </p>
-        <p className='text-center mt-2 text-sm font-bold text-green-500'>
+        <p className="mt-2 text-center text-sm font-bold text-green-500">
           {formatMoney(menuitem.price)}
         </p>
       </CardFooter>

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   CreateView,
@@ -10,20 +10,20 @@ import {
   ImagePicker,
   ResourcePage,
   TextField,
-} from '@/app/(admin)/admin-core';
-import { shorten, stripHtml } from '@/lib/utils';
-import { Image } from '@mantine/core';
-import NextImage from 'next/image';
-import TextAreaField from '../../admin-core/form/TextAreaField';
-import { MenuItem } from './MenuItem';
-import { menuitemRepository } from './repository';
-import NumberField from '../../admin-core/form/NumberField';
-import { formatMoney } from '@/lib/utils/format';
+} from "@/app/(admin)/admin-core";
+import { shorten, stripHtml } from "@/lib/utils";
+import { Image } from "@mantine/core";
+import NextImage from "next/image";
+import { MenuItem } from "./MenuItem";
+import { menuitemRepository } from "./repository";
+import { formatMoney } from "@/lib/utils/format";
+import NumberField from "@/app/(admin)/admin-core/form/NumberField";
+import TextAreaField from "@/app/(admin)/admin-core/form/TextAreaField";
 
 export default function MenuItemPage() {
   return (
     <ResourcePage
-      resourceLabel='Restaurant Menu'
+      resourceLabel="Restaurant Menu"
       repository={menuitemRepository}
       create={MenuItemCreate}
       edit={MenuItemEdit}
@@ -37,10 +37,10 @@ export default function MenuItemPage() {
             component={NextImage}
             height={50}
             width={50}
-            radius='sm'
+            radius="sm"
             h={50}
             w={50}
-            fit='contain'
+            fit="contain"
           />
         ),
       })}
@@ -51,11 +51,11 @@ export default function MenuItemPage() {
 function MenuItemDetails({ item }: { item: MenuItem }) {
   return (
     <DetailsView>
-      <FieldView label='Name' value={item.name} />
-      <FieldView label='Price' value={formatMoney(item.price)} />
+      <FieldView label="Name" value={item.name} />
+      <FieldView label="Price" value={formatMoney(item.price)} />
       <FieldView
         label={shorten(stripHtml(item.description), 100)}
-        value={'Description'}
+        value={"Description"}
       />
       <div>
         {item.image && (
@@ -65,10 +65,10 @@ function MenuItemDetails({ item }: { item: MenuItem }) {
             component={NextImage}
             height={400}
             width={400}
-            radius='md'
+            radius="md"
             h={200}
-            w='auto'
-            fit='contain'
+            w="auto"
+            fit="contain"
           />
         )}
       </div>
@@ -79,10 +79,10 @@ function MenuItemDetails({ item }: { item: MenuItem }) {
 function MenuItemCreate(props: CreateViewProps<MenuItem>) {
   return (
     <CreateView {...props}>
-      <TextField name='name' />
-      <NumberField name='price' />
-      <TextAreaField name='description' rows={5} />
-      <ImagePicker name='image' folder='menuitems' />
+      <TextField name="name" />
+      <NumberField name="price" />
+      <TextAreaField name="description" rows={5} />
+      <ImagePicker name="image" folder="menuitems" />
     </CreateView>
   );
 }
@@ -90,10 +90,10 @@ function MenuItemCreate(props: CreateViewProps<MenuItem>) {
 function MenuItemEdit(props: EditViewProps<MenuItem>) {
   return (
     <EditView {...props}>
-      <TextField name='name' />
-      <NumberField name='price' />
-      <TextAreaField name='description' rows={5} />
-      <ImagePicker name='image' folder='menuitems' />
+      <TextField name="name" />
+      <NumberField name="price" />
+      <TextAreaField name="description" rows={5} />
+      <ImagePicker name="image" folder="menuitems" />
     </EditView>
   );
 }
