@@ -11,7 +11,8 @@ type MealTimeName = (typeof MealTimeNames)[number];
 
 export interface MealTime extends Resource {
   name: MealTimeName;
-  start: string;
-  end: string;
+  startTime: string;
+  endTime: string;
+  price: number;
   description: string;
 }

@@ -23,7 +23,7 @@ import { TimeInput } from '@mantine/dates';
 export default function MealTimePage() {
   return (
     <ResourcePage
-      resourceLabel="MealTimes"
+      resourceLabel='MealTimes'
       repository={mealtimeRepository}
       create={MealTimeCreate}
       edit={MealTimeEdit}
@@ -36,9 +36,9 @@ export default function MealTimePage() {
 function MealTimeDetails({ item }: { item: MealTime }) {
   return (
     <DetailsView>
-      <FieldView label="Name" value={item.name} />
-      <FieldView label="Start" value={item.start} />
-      <FieldView label="End" value={item.end} />
+      <FieldView label='Name' value={item.name} />
+      <FieldView label='Start' value={item.startTime} />
+      <FieldView label='End' value={item.endTime} />
       <FieldView label={item.description} value={'Description'} />
     </DetailsView>
   );
@@ -47,10 +47,10 @@ function MealTimeDetails({ item }: { item: MealTime }) {
 function MealTimeCreate(props: CreateViewProps<MealTime>) {
   return (
     <CreateView {...props}>
-      <SelectField name="name" options={[...MealTimeNames]} />
-      <TimeInput name="start" />
-      <TimeInput name="end" />
-      <Textarea name="description" />
+      <SelectField name='name' options={[...MealTimeNames]} />
+      <TimeInput name='start' />
+      <TimeInput name='end' />
+      <Textarea name='description' />
     </CreateView>
   );
 }
@@ -58,10 +58,10 @@ function MealTimeCreate(props: CreateViewProps<MealTime>) {
 function MealTimeEdit(props: EditViewProps<MealTime>) {
   return (
     <EditView {...props}>
-      <SelectField name="name" options={[...MealTimeNames]} />
-      <TimeInput name="start" />
-      <TimeInput name="end" />
-      <Textarea name="description" />
+      <SelectField name='name' options={[...MealTimeNames]} />
+      <TimeInput name='start' />
+      <TimeInput name='end' />
+      <Textarea name='description' />
     </EditView>
   );
 }
