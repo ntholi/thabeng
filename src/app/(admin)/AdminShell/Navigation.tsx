@@ -8,6 +8,7 @@ import {
   IconCategory,
   IconChevronRight,
   IconClock,
+  IconGlass,
   IconHome,
   IconLogout2,
   IconMeat,
@@ -28,91 +29,91 @@ export default function Navigation() {
   const unseenBookings = useUnseenBookings();
 
   return (
-    <AppShell.Navbar p="xs">
+    <AppShell.Navbar p='xs'>
       <AppShell.Section grow component={ScrollArea}>
         <NavLink
-          label="Home Page"
+          label='Home Page'
           component={Link}
           active={pathname.startsWith('/admin/home-page')}
           href={'/admin/home-page'}
-          leftSection={<IconHome size="1.1rem" />}
-          rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
+          leftSection={<IconHome size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
         <NavLink
-          label="Posts"
+          label='Posts'
           component={Link}
           active={pathname.startsWith('/admin/posts')}
           href={'/admin/posts'}
-          leftSection={<IconNews size="1.1rem" />}
-          rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
+          leftSection={<IconNews size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
         <NotificationIndicator label={unseenBookings}>
           <NavLink
-            label="Bookings"
+            label='Bookings'
             component={Link}
             active={pathname.startsWith('/admin/bookings')}
             href={'/admin/bookings'}
-            leftSection={<IconBrandBooking size="1.1rem" />}
-            rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
+            leftSection={<IconBrandBooking size='1.1rem' />}
+            rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
           />
         </NotificationIndicator>
         <NavLink
-          label="Rooms"
+          label='Rooms'
           component={Link}
           active={pathname.startsWith('/admin/rooms')}
           href={'/admin/rooms'}
-          leftSection={<IconBed size="1.1rem" />}
-          rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
+          leftSection={<IconBed size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
         <NavLink
-          label="Restaurant"
-          leftSection={<IconToolsKitchen size="1.1rem" />}
+          label='Restaurant'
+          leftSection={<IconToolsKitchen size='1.1rem' />}
           opened
         >
           <NavLink
-            label="Page"
+            label='Page'
             component={Link}
             active={pathname.startsWith('/admin/restaurant/page')}
             href={'/admin/restaurant/page'}
-            leftSection={<IconWallpaper size="1.1rem" />}
-            rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
+            leftSection={<IconWallpaper size='1.1rem' />}
+            rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
           />
           <NavLink
-            label="Meal Times"
+            label='Meal Times'
             component={Link}
             active={pathname.startsWith('/admin/restaurant/meal-times')}
             href={'/admin/restaurant/meal-times'}
-            leftSection={<IconClock size="1.1rem" />}
-            rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
+            leftSection={<IconClock size='1.1rem' />}
+            rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
           />
           <NavLink
-            label="Menu"
+            label='Beverage'
             component={Link}
-            active={pathname.startsWith('/admin/restaurant/menu')}
-            href={'/admin/restaurant/menu'}
-            leftSection={<IconMeat size="1.1rem" />}
-            rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
+            active={pathname.startsWith('/admin/restaurant/beverages')}
+            href={'/admin/restaurant/beverages'}
+            leftSection={<IconGlass size='1.1rem' />}
+            rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
           />
         </NavLink>
         <NavLink
-          label="Events"
+          label='Events'
           component={Link}
           active={pathname.startsWith('/admin/events')}
           href={'/admin/events'}
-          leftSection={<IconCalendarEvent size="1.1rem" />}
-          rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
+          leftSection={<IconCalendarEvent size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
         <NavLink
-          label="About Us"
+          label='About Us'
           component={Link}
           active={pathname.startsWith('/admin/about-us')}
           href={'/admin/about-us'}
-          leftSection={<IconCalendarEvent size="1.1rem" />}
-          rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
+          leftSection={<IconCalendarEvent size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
       </AppShell.Section>
       <AppShell.Section>
-        <Divider mb="md" />
+        <Divider mb='md' />
         <UserButton />
       </AppShell.Section>
     </AppShell.Navbar>
@@ -134,11 +135,11 @@ function UserButton() {
 
   return (
     <NavLink
-      label="Logout"
+      label='Logout'
       description={user?.displayName}
       onClick={openModal}
       leftSection={<Avatar src={user?.photoURL} />}
-      rightSection={<IconLogout2 size="1.1rem" />}
+      rightSection={<IconLogout2 size='1.1rem' />}
     />
   );
 }

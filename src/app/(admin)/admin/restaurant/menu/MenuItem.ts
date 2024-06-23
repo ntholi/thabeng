@@ -1,4 +1,4 @@
-import { Resource } from "@/app/(admin)/admin-core/repository/repository";
+import { Resource } from '@/app/(admin)/admin-core/repository/repository';
 
 export interface MenuItem extends Resource {
   name: string;
