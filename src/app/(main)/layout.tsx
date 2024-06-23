@@ -8,7 +8,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Thabeng Hotel',
-  description: 'Thabeng Hotel',
+  description: 'Thabeng Hotel is a hotel in Lesotho',
+  keywords: 'Hotel, Accommodation, Lesotho',
 };
 
 export default function RootLayout({
