@@ -19,6 +19,7 @@ import { Event } from './Event';
 import { eventRepository } from './repository';
 import { dateTime } from '@/lib/utils/format';
 import DateTimeField from '../../admin-core/form/DateTimeField';
+import RichTextField from '../../admin-core/form/RichTextField';
 
 export default function EventPage() {
   return (
@@ -60,8 +61,8 @@ function EventCreate(props: CreateViewProps<Event>) {
     <CreateView {...props}>
       <TextField name='name' />
       <DateTimeField name='date' />
-      <TextAreaField name='description' rows={5} />
       <ImagePicker name='poster' height={200} folder='events' />
+      <RichTextField name='description' />
     </CreateView>
   );
 }
@@ -71,8 +72,8 @@ function EventEdit(props: EditViewProps<Event>) {
     <EditView {...props}>
       <TextField name='name' />
       <DateTimeField name='date' />
-      <TextAreaField name='description' rows={5} />
       <ImagePicker name='poster' height={200} folder='events' />
+      <RichTextField name='description' />
     </EditView>
   );
 }
