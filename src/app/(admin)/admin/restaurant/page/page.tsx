@@ -13,8 +13,7 @@ import { restaurantPageRepository } from './repository';
 
 export default function LandingPage() {
   const [image, setImage] = useState<string>();
-  const [heading, setHeading] = useState<string>();
-  const [subheading, setSubheading] = useState<string>();
+  const [tagline, setTagline] = useState<string>();
   const colorScheme = useComputedColorScheme();
   const [pending, startTransition] = useTransition();
 
@@ -22,8 +21,7 @@ export default function LandingPage() {
     restaurantPageRepository.getRestaurantPage().then((it) => {
       if (!it) return;
       setImage(it.backgroundImage);
-      setHeading(it.heading);
-      setSubheading(it.subheading);
+      setTagline(it.tagline);
     });
   }, []);
 
@@ -31,8 +29,7 @@ export default function LandingPage() {
     startTransition(async () => {
       await restaurantPageRepository.setRestaurantPage({
         backgroundImage: image,
-        heading,
-        subheading,
+        tagline,
       });
     });
   }
@@ -50,24 +47,19 @@ export default function LandingPage() {
       }}
     >
       <ImagePicker
-        name="Background Image"
+        name='Background Image'
         value={image}
         onChange={(it: string) => setImage(it)}
-        folder="restaurant-page"
+        folder='restaurant-page'
         height={200}
       />
       <TextInput
-        value={heading}
-        onChange={(e) => setHeading(e.currentTarget.value)}
-        placeholder="Heading"
-      />
-      <Textarea
-        value={subheading}
-        onChange={(e) => setSubheading(e.currentTarget.value)}
-        placeholder="Subheading"
+        value={tagline}
+        onChange={(e) => setTagline(e.currentTarget.value)}
+        placeholder='Tagline'
       />
       <Button
-        color="dark"
+        color='dark'
         mt={'lg'}
         fullWidth
         loading={pending}

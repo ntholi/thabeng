@@ -6,12 +6,9 @@ import {
   MdFastfood as FastFood,
   MdCalendarMonth,
   MdHotel,
-  MdInfo,
-  MdOutlineInfo,
 } from 'react-icons/md';
 import Container from './core/Container';
 import Footer from './core/Footer';
-import LandingPost from './home/LandingPost';
 import Hotel from './home/Hotel';
 import Restaurant from './home/Restaurant';
 
