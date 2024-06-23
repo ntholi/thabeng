@@ -62,7 +62,7 @@ export default function Home() {
           <ClickableCard icon={MdCalendarMonth} text='Events' href='/events' />
         </nav>
       </header>
-      <div className='h-screen'></div>
+      <div className='h-[90vh]'></div>
       <main className='bg-blue-900/5'>
         <Hotel />
         <Container className='px-0 py-0 sm:px-0'>
