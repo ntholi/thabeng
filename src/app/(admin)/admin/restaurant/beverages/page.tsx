@@ -19,7 +19,7 @@ import { beverageRepository } from './repository';
 export default function BeveragePage() {
   return (
     <ResourcePage
-      resourceLabel='Restaurant Menu'
+      resourceLabel='Beverages'
       repository={beverageRepository}
       create={BeverageCreate}
       edit={BeverageEdit}
