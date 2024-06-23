@@ -21,7 +21,6 @@ export default function Navbar() {
   if (pathname.startsWith('/auth')) return null;
 
   const menuItems = [
-    { label: 'Home', href: '/' },
     {
       label: 'Hotel',
       href: '/#hotel',
