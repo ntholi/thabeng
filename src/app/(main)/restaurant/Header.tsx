@@ -56,13 +56,18 @@ async function MealTimeDisplay() {
     <section className='-top-28 mx-auto flex w-full bg-blue-900/95 text-white md:relative md:w-[60vw]'>
       {mealTimes.map((it, i) => (
         <React.Fragment key={it.id}>
-          <div className='flex flex-1 flex-col items-center gap-1 p-4 sm:gap-2 sm:px-5 sm:py-10'>
+          <div className='flex flex-1 flex-col items-center gap-1 p-1.5 sm:gap-2 sm:px-5 sm:py-10'>
             <Icon mealName={it.name} />
             <h4>{it.name}</h4>
-            <div className='flex items-center gap-2'>
-              <p className='text-sm text-green-200'>{formatMoney(it.price)}</p>
-              <span className='flex'>•</span>
-              <p className='text-xs sm:text-sm'>
+            <div className='flex flex-col items-center gap-2 xl:flex-row'>
+              <p className='text-xs text-green-200 md:text-sm'>
+                {formatMoney(it.price)}
+              </p>
+              <span className='hidden xl:block'>•</span>
+              <p className='hidden text-xs md:block md:text-sm'>
+                {convertTime(it.startTime)} - {convertTime(it.endTime)}
+              </p>
+              <p className='block text-xs md:hidden md:text-sm'>
                 {it.startTime} - {it.endTime}
               </p>
             </div>
@@ -93,4 +98,12 @@ function Icon({ mealName }: { mealName: MealTime['name'] }) {
     case 'Snack':
       return <IconLollipop size={size} />;
   }
+}
+
+// turns time from 24hr to 12hr
+function convertTime(time: string) {
+  const [hours, minutes] = time.split(':');
+  return `${parseInt(hours) > 12 ? parseInt(hours) - 12 : hours}:${minutes} ${
+    parseInt(hours) > 12 ? 'PM' : 'AM'
+  }`;
 }
