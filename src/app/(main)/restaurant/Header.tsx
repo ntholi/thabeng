@@ -2,6 +2,7 @@ import { MealTime } from '@/app/(admin)/admin/restaurant/meal-times/MealTime';
 import { mealtimeRepository } from '@/app/(admin)/admin/restaurant/meal-times/repository';
 import { restaurantPageRepository } from '@/app/(admin)/admin/restaurant/page/repository';
 import { cn } from '@/lib/utils';
+import { formatMoney } from '@/lib/utils/format';
 import { Spinner } from '@nextui-org/react';
 import {
   IconBread,
@@ -58,9 +59,13 @@ async function MealTimeDisplay() {
           <div className='flex flex-1 flex-col items-center gap-1 p-4 sm:gap-2 sm:px-5 sm:py-10'>
             <Icon mealName={it.name} />
             <h4>{it.name}</h4>
-            <p className='text-xs sm:text-sm'>
-              {it.startTime} - {it.endTime}
-            </p>
+            <div className='flex items-center gap-2'>
+              <p className='text-sm text-green-200'>{formatMoney(it.price)}</p>
+              <span className='flex'>•</span>
+              <p className='text-xs sm:text-sm'>
+                {it.startTime} - {it.endTime}
+              </p>
+            </div>
             <p className='hidden text-center text-xs sm:block'>
               {it.description}
             </p>
