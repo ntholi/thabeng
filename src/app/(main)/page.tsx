@@ -6,6 +6,8 @@ import {
   MdFastfood as FastFood,
   MdCalendarMonth,
   MdHotel,
+  MdInfo,
+  MdOutlineInfo,
 } from 'react-icons/md';
 import Container from './core/Container';
 import Footer from './core/Footer';
@@ -31,7 +33,7 @@ export default function Home() {
         <div
           className={cn(
             'dark-overlay h-56 px-6 py-5 text-center sm:px-20',
-            'flex flex-col gap-2',
+            'flex flex-col gap-3.5',
           )}
         >
           <h1 className={cn(font.className, 'text-5xl font-bold sm:text-7xl')}>
@@ -42,7 +44,7 @@ export default function Home() {
             <Button
               variant='bordered'
               color='primary'
-              radius='sm'
+              radius='full'
               className='border-1 border-white px-8 text-white'
             >
               About Us
