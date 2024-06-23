@@ -42,6 +42,15 @@ function EventDetails({ item }: { item: Event }) {
         label={shorten(stripHtml(item.description), 100)}
         value={'Description'}
       />
+      <Image
+        component={NextImage}
+        radius='md'
+        width={500}
+        height={500}
+        h={200}
+        src={item.poster}
+        alt={item.name}
+      />
     </DetailsView>
   );
 }
@@ -52,6 +61,7 @@ function EventCreate(props: CreateViewProps<Event>) {
       <TextField name='name' />
       <DateTimeField name='date' />
       <TextAreaField name='description' rows={5} />
+      <ImagePicker name='poster' height={200} folder='events' />
     </CreateView>
   );
 }
@@ -62,6 +72,7 @@ function EventEdit(props: EditViewProps<Event>) {
       <TextField name='name' />
       <DateTimeField name='date' />
       <TextAreaField name='description' rows={5} />
+      <ImagePicker name='poster' height={200} folder='events' />
     </EditView>
   );
 }
