@@ -10,6 +10,7 @@ import {
   IconChevronRight,
   IconClock,
   IconGlass,
+  IconGlassCocktail,
   IconHome,
   IconLogout2,
   IconMeat,
@@ -101,6 +102,14 @@ export default function Navigation() {
             active={pathname.startsWith('/admin/restaurant/beverages')}
             href={'/admin/restaurant/beverages'}
             leftSection={<IconGlass size='1.1rem' />}
+            rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
+          />
+          <NavLink
+            label='Cocktails'
+            component={Link}
+            active={pathname.startsWith('/admin/restaurant/cocktails')}
+            href={'/admin/restaurant/cocktails'}
+            leftSection={<IconGlassCocktail size='1.1rem' />}
             rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
           />
         </NavLink>
