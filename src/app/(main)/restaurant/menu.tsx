@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Container from '../core/Container';
 import { Salsa } from 'next/font/google';
 import { cn } from '@/lib/utils';
@@ -6,6 +8,8 @@ import { cn } from '@/lib/utils';
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
 export default function Menu() {
+  const [data, setData] = useState([]);
+
   const menu = [
     { name: 'Meals', image: 'meals.jpg' },
     { name: 'Desserts', image: 'dessert.jpg' },
@@ -14,6 +18,7 @@ export default function Menu() {
     { name: 'Gin & Tonic', image: 'gin.jpg' },
     { name: 'Wine', image: 'wine.jpg' },
   ];
+
   return (
     <div className='-mt-20'>
       <div className='col-span-12 my-8'>
@@ -39,7 +44,9 @@ export default function Menu() {
             />
             <div className='absolute inset-0 bg-black/50 transition-opacity duration-300 group-hover:bg-opacity-20'></div>
             <div className='absolute inset-0 left-2 z-10 flex items-center justify-center'>
-              <span className='font-semibold text-white'>{item.name}</span>
+              <span className='text-xl font-semibold text-white'>
+                {item.name}
+              </span>
             </div>
           </button>
         ))}

@@ -1,5 +1,5 @@
 import { db } from '@/lib/config/firebase';
-import { doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 class RestaurantPageRepository {
   async setRestaurantPage(restaurantPage: RestaurantPage) {
