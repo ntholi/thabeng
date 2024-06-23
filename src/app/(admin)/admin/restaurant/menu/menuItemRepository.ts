@@ -28,4 +28,4 @@ export class MenuItemRepository<
   }
 }
 
-export const cocktailRepository = new MenuItemRepository();
+export const menuItemRepository = new MenuItemRepository();
