@@ -20,6 +20,8 @@ import { eventRepository } from './repository';
 import { dateTime } from '@/lib/utils/format';
 import DateTimeField from '../../admin-core/form/DateTimeField';
 import RichTextField from '../../admin-core/form/RichTextField';
+import { number } from 'zod';
+import { useEffect, useState } from 'react';
 
 export default function EventPage() {
   return (
@@ -35,9 +37,16 @@ export default function EventPage() {
 }
 
 function EventDetails({ item }: { item: Event }) {
+  const [interested, setInterested] = useState<number | string>('?');
+
+  useEffect(() => {
+    eventRepository.getInterested(item.id).then(setInterested);
+  }, [item.id]);
+
   return (
     <DetailsView>
       <FieldView label='Name' value={item.name} />
+      <FieldView label='Interested' value={interested} />
       <FieldView label='Date' value={dateTime(item.date)} />
       <FieldView
         label={shorten(stripHtml(item.description), 100)}

@@ -3,6 +3,7 @@ import {
   addDoc,
   collection,
   doc,
+  getCountFromServer,
   limit,
   orderBy,
   query,
@@ -21,6 +22,12 @@ class EventRepository extends FirebaseRepository<Event> {
     setDoc(doc(db, this.collectionName, id, 'interests', ipAddress), {
       date: serverTimestamp(),
     });
+  }
+
+  async getInterested(id: string) {
+    const q = query(collection(db, this.collectionName, id, 'interests'));
+    const snapshot = await getCountFromServer(q);
+    return snapshot.data().count;
   }
 
   async latestEvents() {
