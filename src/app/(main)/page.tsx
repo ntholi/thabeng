@@ -19,48 +19,44 @@ export default function Home() {
   const banner = '/images/test-image.jpg';
   return (
     <>
-      <main>
-        <header
-          style={{
-            backgroundImage: `url(${banner})`,
-          }}
+      <header
+        style={{
+          backgroundImage: `url(${banner})`,
+        }}
+        className={cn(
+          'absolute top-0 h-dvh w-full bg-black/15 bg-cover bg-center text-white bg-blend-overlay',
+          'flex flex-col items-center justify-center',
+        )}
+      >
+        <div
           className={cn(
-            'h-[75dvh] sm:h-[80vh] w-[100vw] top-0 bg-black/15 bg-cover bg-center text-white bg-blend-overlay',
-            'flex flex-col justify-center items-center'
+            'dark-overlay h-56 px-6 py-5 text-center sm:px-20',
+            'flex flex-col justify-between',
           )}
         >
-          <div
-            className={cn(
-              'h-56 text-center dark-overlay px-6 sm:px-20 py-5',
-              'flex flex-col justify-between'
-            )}
-          >
-            <h1
-              className={cn(font.className, 'text-5xl sm:text-7xl font-bold')}
-            >
-              Thabeng Hotel
-            </h1>
-            <LandingPost />
-          </div>
-        </header>
+          <h1 className={cn(font.className, 'text-5xl font-bold sm:text-7xl')}>
+            Thabeng Hotel
+          </h1>
+          <LandingPost />
+        </div>
         <nav
           className={cn(
-            'md:-mt-16 w-full flex justify-center gap-5 px-2 py-6 sm:py-10 sm:w-[60vw] sm:mx-auto',
-            'backdrop-blur-sm bg-white/80'
+            'absolute bottom-0 mx-auto flex w-full justify-center gap-5 px-2 py-6 sm:bottom-5 sm:w-[80vw] sm:rounded-lg sm:py-10 lg:w-[45vw]',
+            'bg-white/45 backdrop-blur-md',
           )}
         >
           <ClickableCard icon={MdHotel} text='Hotel' href='#hotel' />
           <ClickableCard icon={FastFood} text='Restaurant' href='#restaurant' />
           <ClickableCard icon={MdCalendarMonth} text='Events' href='/events' />
         </nav>
-
-        <div className='bg-blue-900/5'>
-          <Hotel />
-          <Container className='px-0 sm:px-0 py-0'>
-            <Divider />
-          </Container>
-          <Restaurant />
-        </div>
+      </header>
+      <div className='h-screen'></div>
+      <main className='bg-blue-900/5'>
+        <Hotel />
+        <Container className='px-0 py-0 sm:px-0'>
+          <Divider />
+        </Container>
+        <Restaurant />
       </main>
       <Footer />
     </>
@@ -82,7 +78,7 @@ function ClickableCard({ icon: Icon, text, href = '#' }: ClickableCardProps) {
       color='primary'
       size='lg'
     >
-      <Icon className='text-xl sm:text-xl hidden sm:block' />
+      <Icon className='hidden text-xl sm:block sm:text-xl' />
       <span className='text-xs sm:text-sm'>{text}</span>
     </Button>
   );

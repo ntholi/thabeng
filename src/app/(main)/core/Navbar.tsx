@@ -41,7 +41,7 @@ export default function Navbar() {
   ];
 
   return (
-    <NextUiNavbar onMenuOpenChange={setIsMenuOpen} className='h-[8vh]'>
+    <NextUiNavbar onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -78,8 +78,8 @@ export default function Navbar() {
                 index === 2
                   ? 'primary'
                   : index === menuItems.length - 1
-                  ? 'danger'
-                  : 'foreground'
+                    ? 'danger'
+                    : 'foreground'
               }
               className='w-full'
               href={item.href}
