@@ -31,13 +31,23 @@ export default function Home() {
         <div
           className={cn(
             'dark-overlay h-56 px-6 py-5 text-center sm:px-20',
-            'flex flex-col justify-between',
+            'flex flex-col gap-2',
           )}
         >
           <h1 className={cn(font.className, 'text-5xl font-bold sm:text-7xl')}>
             Thabeng Hotel
           </h1>
-          <LandingPost />
+          <p className='text-lg sm:text-xl'>Your Home Away From Home</p>
+          <div className='text-center'>
+            <Button
+              variant='bordered'
+              color='primary'
+              radius='sm'
+              className='border-1 border-white px-8 text-white'
+            >
+              About Us
+            </Button>
+          </div>
         </div>
         <nav
           className={cn(
