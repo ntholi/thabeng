@@ -11,6 +11,7 @@ import {
   IconClock,
   IconGlass,
   IconGlassCocktail,
+  IconGlassGin,
   IconHome,
   IconLogout2,
   IconMeat,
@@ -110,6 +111,14 @@ export default function Navigation() {
             active={pathname.startsWith('/admin/restaurant/cocktails')}
             href={'/admin/restaurant/cocktails'}
             leftSection={<IconGlassCocktail size='1.1rem' />}
+            rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
+          />
+          <NavLink
+            label='Gin & Tonic'
+            component={Link}
+            active={pathname.startsWith('/admin/restaurant/gins')}
+            href={'/admin/restaurant/gins'}
+            leftSection={<IconGlassGin size='1.1rem' />}
             rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
           />
         </NavLink>
