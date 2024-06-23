@@ -5,6 +5,7 @@ import { Salsa } from 'next/font/google';
 import { Card, CardBody, cn } from '@nextui-org/react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { shorten } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Thabeng Events',
@@ -35,23 +36,21 @@ export default async function EventsPage() {
             isPressable
             className='w-full'
           >
-            <CardBody>
-              <article className='grid-cols-12 bg-white px-4 py-8 sm:grid md:pe-20'>
-                <div className='col-span-3 hidden text-center sm:block'>
-                  <p className='text-lg uppercase text-zinc-600'>
-                    {month(event.date)}
-                  </p>
-                  <p className='text-2xl'>{dayOfMonth(event.date)}</p>
-                </div>
-                <div className='col-span-9'>
-                  <p className='font-bold text-zinc-600'>
-                    {fullDate(event.date)}
-                  </p>
-                  <h2 className='text-3xl'>{event.name}</h2>
-                  <p className='mt-3'>{event.description}</p>
-                </div>
-              </article>
-            </CardBody>
+            <article className='grid-cols-12 bg-white px-4 py-8 sm:grid md:pe-20'>
+              <div className='col-span-3 hidden text-center sm:block'>
+                <p className='text-lg uppercase text-zinc-600'>
+                  {month(event.date)}
+                </p>
+                <p className='text-2xl'>{dayOfMonth(event.date)}</p>
+              </div>
+              <div className='col-span-9'>
+                <p className='font-bold text-zinc-600'>
+                  {fullDate(event.date)}
+                </p>
+                <h2 className='text-3xl'>{event.name}</h2>
+                <p className='mt-3'>{shorten(event.description, 150)}</p>
+              </div>
+            </article>
           </Card>
         ))}
       </Container>
