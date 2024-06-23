@@ -1,9 +1,9 @@
-import { FirebaseRepository } from '@/app/(admin)/admin-core';
+import { MenuItemRepository } from '../menu/menuItemRepository';
 import { Wine } from './Wine';
 
-class WineRepository extends FirebaseRepository<Wine> {
+class WineRepository extends MenuItemRepository<Wine> {
   constructor() {
-    super('wines');
+    super('Wine');
   }
 }
 

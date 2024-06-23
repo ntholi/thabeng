@@ -1,11 +1,9 @@
-import { collection, orderBy, query, where } from 'firebase/firestore';
+import { MenuItemRepository } from '../menu/menuItemRepository';
 import { Meal } from './Meal';
-import { db } from '@/lib/config/firebase';
-import { FirebaseRepository } from '@/app/(admin)/admin-core';
 
-class MealRepository extends FirebaseRepository<Meal> {
+class MealRepository extends MenuItemRepository<Meal> {
   constructor() {
-    super('meals');
+    super('Meals');
   }
 }
 

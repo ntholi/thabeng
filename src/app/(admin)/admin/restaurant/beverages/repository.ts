@@ -1,10 +1,10 @@
-import { FirebaseRepository } from '@/app/(admin)/admin-core';
-import { Beverage } from './Beverage';
 import { ResourceCreate } from '@/app/(admin)/admin-core/repository/repository';
+import { MenuItemRepository } from '../menu/menuItemRepository';
+import { Beverage } from './Beverage';
 
-class BeverageRepository extends FirebaseRepository<Beverage> {
+class BeverageRepository extends MenuItemRepository<Beverage> {
   constructor() {
-    super('beverages');
+    super('Beverages');
   }
 
   create(resource: ResourceCreate<Beverage>): Promise<Beverage> {

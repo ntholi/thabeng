@@ -1,6 +1,6 @@
-import { Resource } from '@/app/(admin)/admin-core/repository/repository';
+import { MenuItem } from '../menu/MenuItem';
 
-export interface Gin extends Resource {
+export interface Gin extends MenuItem {
   name: string;
   description: string;
   price: number;

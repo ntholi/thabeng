@@ -1,4 +1,5 @@
 import { Resource } from '@/app/(admin)/admin-core/repository/repository';
+import { MenuItem } from '../menu/MenuItem';
 
 export const MealCategories = [
   'Appetizer',
@@ -10,7 +11,7 @@ export const MealCategories = [
 ] as const;
 export type MealCategory = (typeof MealCategories)[number];
 
-export interface Meal extends Resource {
+export interface Meal extends MenuItem {
   name: string;
   category: MealCategory;
   description: string;

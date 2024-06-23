@@ -10,7 +10,6 @@ import {
 import Container from './core/Container';
 import Footer from './core/Footer';
 import Hotel from './home/Hotel';
-import Restaurant from './home/Restaurant';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
@@ -65,7 +64,6 @@ export default function Home() {
         <Container className='px-0 py-0 sm:px-0'>
           <Divider />
         </Container>
-        <Restaurant />
       </main>
       <Footer />
     </>

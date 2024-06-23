@@ -1,9 +1,10 @@
 import { FirebaseRepository } from '@/app/(admin)/admin-core';
 import { Gin } from './Gin';
+import { MenuItemRepository } from '../menu/menuItemRepository';
 
-class GinRepository extends FirebaseRepository<Gin> {
+class GinRepository extends MenuItemRepository<Gin> {
   constructor() {
-    super('gins');
+    super('Gin & Tonic');
   }
 }
 

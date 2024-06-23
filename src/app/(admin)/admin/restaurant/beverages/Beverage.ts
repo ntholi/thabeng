@@ -1,4 +1,4 @@
-import { Resource } from '@/app/(admin)/admin-core/repository/repository';
+import { MenuItem } from '../menu/MenuItem';
 
 export const BeverageCategories = [
   'Cider',
@@ -28,7 +28,7 @@ export const BeverageCategories = [
 ];
 type BeverageCategory = (typeof BeverageCategories)[number];
 
-export interface Beverage extends Resource {
+export interface Beverage extends MenuItem {
   name: string;
   category: BeverageCategory;
   price: number;
