@@ -19,6 +19,7 @@ import { MealTime, MealTimeNames } from './MealTime';
 import { mealtimeRepository } from './repository';
 import { dateTime } from '@/lib/utils/format';
 import { TimeInput } from '@mantine/dates';
+import NumberField from '@/app/(admin)/admin-core/form/NumberField';
 
 export default function MealTimePage() {
   return (
@@ -37,6 +38,7 @@ function MealTimeDetails({ item }: { item: MealTime }) {
   return (
     <DetailsView>
       <FieldView label='Name' value={item.name} />
+      <FieldView label='Price' value={item.price} />
       <FieldView label='Start' value={item.startTime} />
       <FieldView label='End' value={item.endTime} />
       <FieldView label={item.description} value={'Description'} />
@@ -48,8 +50,9 @@ function MealTimeCreate(props: CreateViewProps<MealTime>) {
   return (
     <CreateView {...props}>
       <SelectField name='name' options={[...MealTimeNames]} />
-      <TimeInput name='start' />
-      <TimeInput name='end' />
+      <NumberField name='price' />
+      <TimeInput name='startTime' />
+      <TimeInput name='endTime' />
       <Textarea name='description' />
     </CreateView>
   );
@@ -59,8 +62,9 @@ function MealTimeEdit(props: EditViewProps<MealTime>) {
   return (
     <EditView {...props}>
       <SelectField name='name' options={[...MealTimeNames]} />
-      <TimeInput name='start' />
-      <TimeInput name='end' />
+      <NumberField name='price' />
+      <TimeInput name='startTime' />
+      <TimeInput name='endTime' />
       <Textarea name='description' />
     </EditView>
   );
