@@ -28,7 +28,7 @@ export default async function Header() {
           width={1920}
           height={1080}
           alt='Banner'
-          className='h-[60dvh] w-full object-cover'
+          className='h-[55dvh] w-full object-cover'
         />
         <div className='absolute inset-0 flex h-full flex-col items-center justify-center bg-black/30 px-6 py-5 text-white'>
           <h1 className={cn(font.className, 'text-5xl font-bold sm:text-7xl')}>

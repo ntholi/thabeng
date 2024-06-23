@@ -15,7 +15,7 @@ export default function Menu() {
     { name: 'Wine', image: 'wine.jpg' },
   ];
   return (
-    <div className='-mt-16'>
+    <div className='-mt-20'>
       <div className='col-span-12 my-8'>
         <p className='text-center text-xs uppercase text-foreground-400'>
           Browse our menu
@@ -26,7 +26,7 @@ export default function Menu() {
             'text-center text-6xl font-bold text-blue-900',
           )}
         >
-          Restaurant
+          Menu
         </h1>
       </div>
       <Container as={'nav'} className='grid grid-cols-3 gap-3'>
@@ -35,7 +35,7 @@ export default function Menu() {
             <img
               src={`/images/${item.image}`}
               alt={item.name}
-              className='h-52 w-full object-cover transition-transform duration-300 group-hover:scale-110'
+              className='h-52 w-full object-cover transition-transform duration-300 group-hover:scale-110 group-active:scale-105'
             />
             <div className='absolute inset-0 bg-black/50 transition-opacity duration-300 group-hover:bg-opacity-20'></div>
             <div className='absolute inset-0 left-2 z-10 flex items-center justify-center'>
