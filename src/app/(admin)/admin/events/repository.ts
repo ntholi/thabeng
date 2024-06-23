@@ -1,5 +1,14 @@
 import { db } from '@/lib/config/firebase';
-import { collection, limit, orderBy, query } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  limit,
+  orderBy,
+  query,
+  serverTimestamp,
+  setDoc,
+} from 'firebase/firestore';
 import { FirebaseRepository } from '../../admin-core/repository';
 import { Event } from './Event';
 
@@ -8,11 +17,17 @@ class EventRepository extends FirebaseRepository<Event> {
     super('events');
   }
 
+  async interested(id: string, ipAddress: string) {
+    setDoc(doc(db, this.collectionName, id, 'interests', ipAddress), {
+      date: serverTimestamp(),
+    });
+  }
+
   async latestEvents() {
     const q = query(
       collection(db, this.collectionName),
       orderBy('date', 'desc'),
-      limit(17)
+      limit(17),
     );
     return super.getDocs(q);
   }

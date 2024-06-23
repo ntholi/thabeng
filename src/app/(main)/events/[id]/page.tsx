@@ -8,6 +8,8 @@ import Image from 'next/image';
 import RawHTML from '@/components/RawHTML';
 import { dateTime } from '@/lib/utils/format';
 import { IconCalendar, IconCheck } from '@tabler/icons-react';
+import InterestButton from './InterestButton';
+import { headers } from 'next/headers';
 
 type Props = { params: { id: string } };
 
@@ -27,6 +29,9 @@ export async function generateMetadata({ params: { id } }: Props) {
 
 export default async function EventPage({ params: { id } }: Props) {
   const event = await getEvent(id);
+  const header = headers();
+  const ip = (header.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0];
+
   if (!event) {
     return notFound();
   }
@@ -47,9 +52,7 @@ export default async function EventPage({ params: { id } }: Props) {
             <IconCalendar size='1.2rem' />
             <span>{dateTime(event.date)}</span>
           </p>
-          <Button color='primary' variant='flat'>
-            Interested
-          </Button>
+          <InterestButton eventId={id} ipAddress={ip} />
         </div>
         <figure className='sm:w-full'>
           <Image
