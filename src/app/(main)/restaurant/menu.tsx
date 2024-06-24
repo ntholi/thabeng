@@ -33,28 +33,21 @@ const menu: MenuType = [
 export default function Menu() {
   const [data, setData] = useState<MenuItem[]>([]);
   const [filtered, setFiltered] = useState<MenuItem[]>([]);
-  const [selectedType, setSelectedType] = useState<MenuItemType | null>(null);
   const menuItemsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     menuItemRepository.getAll().then(setData);
   }, []);
 
-  useEffect(() => {
-    if (selectedType) {
-      setFiltered(data.filter((it) => it.type === selectedType));
-    }
-  }, [selectedType, data]);
+  function handleSelect(type: MenuItemType) {
+    setFiltered(data.filter((it) => it.type === type));
+  }
 
   useEffect(() => {
     if (filtered.length > 0) {
       menuItemsRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [filtered]);
-
-  function handleSelect(type: MenuItemType) {
-    setSelectedType(type);
-  }
 
   return (
     <div className='-mt-20'>
