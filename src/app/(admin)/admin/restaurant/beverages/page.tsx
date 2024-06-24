@@ -26,7 +26,7 @@ export default function BeveragePage() {
       details={BeverageDetails}
       navLinkProps={(it) => ({
         label: `${it.name}`,
-        description: it.size,
+        description: it.category,
       })}
     ></ResourcePage>
   );

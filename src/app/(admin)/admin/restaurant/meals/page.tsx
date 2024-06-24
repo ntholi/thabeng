@@ -31,6 +31,7 @@ export default function MealPage() {
       details={MealDetails}
       navLinkProps={(it) => ({
         label: `${it.name}`,
+        description: `${it.category}`,
       })}
     ></ResourcePage>
   );

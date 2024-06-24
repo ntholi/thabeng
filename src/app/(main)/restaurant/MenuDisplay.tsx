@@ -1,9 +1,5 @@
 import { Meal } from '@/app/(admin)/admin/restaurant/meals/Meal';
-import {
-  MenuItem,
-  MenuItemType,
-} from '@/app/(admin)/admin/restaurant/menu/MenuItem';
-import React from 'react';
+import { MenuItem } from '@/app/(admin)/admin/restaurant/menu/MenuItem';
 
 type Props = {
   data: MenuItem[];
@@ -11,7 +7,7 @@ type Props = {
 
 export default function MenuDisplay({ data }: Props) {
   return (
-    <div className='gird-2 grid gap-10'>
+    <div className='col-span-1 grid gap-10 sm:col-span-2'>
       {data.map((it) => (
         <ItemSwitch value={it} />
       ))}
@@ -34,7 +30,10 @@ function ItemSwitch({ value }: { value: MenuItem }) {
 function MealDisplay({ value }: { value: Meal }) {
   return (
     <div className='flex justify-between'>
-      <p>{value.name}</p>
+      <div>
+        <p>{value.name}</p>
+        <p>{value.description}</p>
+      </div>
       <p>{value.price}</p>
     </div>
   );
