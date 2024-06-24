@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Container from '../core/Container';
 import { Salsa } from 'next/font/google';
 import { cn } from '@/lib/utils';
@@ -33,13 +33,27 @@ const menu: MenuType = [
 export default function Menu() {
   const [data, setData] = useState<MenuItem[]>([]);
   const [filtered, setFiltered] = useState<MenuItem[]>([]);
+  const [selectedType, setSelectedType] = useState<MenuItemType | null>(null);
+  const menuItemsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     menuItemRepository.getAll().then(setData);
   }, []);
 
+  useEffect(() => {
+    if (selectedType) {
+      setFiltered(data.filter((it) => it.type === selectedType));
+    }
+  }, [selectedType, data]);
+
+  useEffect(() => {
+    if (filtered.length > 0) {
+      menuItemsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [filtered]);
+
   function handleSelect(type: MenuItemType) {
-    setFiltered(data.filter((it) => it.type === type));
+    setSelectedType(type);
   }
 
   return (
@@ -78,7 +92,9 @@ export default function Menu() {
           </button>
         ))}
       </Container>
-      <MenuDisplay data={filtered} />
+      <section ref={menuItemsRef}>
+        <MenuDisplay data={filtered} />
+      </section>
     </div>
   );
 }
