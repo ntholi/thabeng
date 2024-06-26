@@ -40,6 +40,8 @@ export default function Home() {
               color='primary'
               radius='full'
               className='border-1 border-white px-8 text-white'
+              as={Link}
+              href='/#about-us'
             >
               About Us
             </Button>

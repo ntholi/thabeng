@@ -27,7 +27,7 @@ type Props = {
 async function Footer({ docSnapshot }: Props) {
   const page = (await docSnapshot).data() as AboutUs;
   return (
-    <Container>
+    <Container className='h-[90vh]'>
       <div className='mt-2' id='about-us'>
         <h1 className={cn('pt-16 text-3xl', font.className)}>About Us</h1>
         <p className='py-8 text-sm text-gray-800'>{page?.aboutUs}</p>
