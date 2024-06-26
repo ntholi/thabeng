@@ -42,18 +42,7 @@ export default function Menu() {
   }, []);
 
   function handleSelect(type: MenuItemType) {
-    const typeSpecific = data.filter((it) => it.type === type);
-    if (type === 'Meals') {
-      setFiltered(
-        typeSpecific.filter((it) => (it as Meal)?.category !== 'Dessert'),
-      );
-    } else if (type === 'Desserts') {
-      setFiltered(
-        typeSpecific.filter((it) => (it as Meal)?.category === 'Dessert'),
-      );
-    } else {
-      setFiltered(typeSpecific);
-    }
+    setFiltered(data.filter((item) => item.type === type));
     setSelected(type);
   }
 
@@ -99,9 +88,11 @@ export default function Menu() {
           </button>
         ))}
       </Container>
-      <section ref={menuItemsRef}>
-        <MenuDisplay menuType={selected} data={filtered} />
-      </section>
+      {filtered.length > 0 && (
+        <section ref={menuItemsRef}>
+          <MenuDisplay menuType={selected} data={filtered} />
+        </section>
+      )}
     </div>
   );
 }
