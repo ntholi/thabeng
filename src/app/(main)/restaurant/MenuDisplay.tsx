@@ -18,12 +18,12 @@ const font = Salsa({ weight: '400', subsets: ['latin'] });
 
 export default function MenuDisplay({ data, menuType }: Props) {
   return (
-    <Container width='sm' className='mt-10'>
+    <Container width='md' className='mt-10'>
       <h1 className={cn(font.className, 'text-5xl font-light')}>
         {menuType} Menu
       </h1>
       <Divider className='my-3' />
-      <div className='grid grid-cols-1 gap-10 sm:grid-cols-2'>
+      <div className='grid grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2'>
         {data.map((it) => (
           <ItemSwitch value={it} />
         ))}
