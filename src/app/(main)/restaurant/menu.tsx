@@ -53,7 +53,7 @@ export default function Menu() {
   }, [filtered]);
 
   return (
-    <div className='-mt-20'>
+    <div className='sm:-mt-20'>
       <div className='col-span-12 my-8'>
         <p className='text-center text-xs uppercase text-foreground-400'>
           Browse our menu
@@ -67,7 +67,7 @@ export default function Menu() {
           Menu
         </h1>
       </div>
-      <Container as={'nav'} className='grid grid-cols-3 gap-3'>
+      <Container as={'nav'} className='grid grid-cols-2 gap-3 sm:grid-cols-3'>
         {menu.map((item, index) => (
           <button
             key={index}
