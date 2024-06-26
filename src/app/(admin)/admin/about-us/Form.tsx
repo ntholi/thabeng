@@ -17,6 +17,7 @@ import { useForm } from '@mantine/form';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/lib/config/firebase';
 import ThemedButton from '../../admin-core/components/ThemedButton';
+import RichTextField from '../../admin-core/form/RichTextField';
 
 type Props = {
   page: AboutUs | null | undefined;
@@ -102,9 +103,8 @@ export default function Form({ page }: Props) {
                 </Stack>
               </Grid.Col>
               <Grid.Col span={12}>
-                <Textarea
+                <RichTextField
                   label='About Us'
-                  rows={10}
                   {...form.getInputProps('aboutUs')}
                 />
               </Grid.Col>
