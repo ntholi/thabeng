@@ -34,6 +34,7 @@ export default function Menu() {
   const [data, setData] = useState<MenuItem[]>([]);
   const [filtered, setFiltered] = useState<MenuItem[]>([]);
   const menuItemsRef = useRef<HTMLDivElement>(null);
+  const [selected, setSelected] = useState<MenuItemType | null>(null);
 
   useEffect(() => {
     menuItemRepository.getAll().then(setData);
@@ -41,6 +42,7 @@ export default function Menu() {
 
   function handleSelect(type: MenuItemType) {
     setFiltered(data.filter((it) => it.type === type));
+    setSelected(type);
   }
 
   useEffect(() => {
@@ -86,7 +88,7 @@ export default function Menu() {
         ))}
       </Container>
       <section ref={menuItemsRef}>
-        <MenuDisplay data={filtered} />
+        <MenuDisplay menuType={selected} data={filtered} />
       </section>
     </div>
   );

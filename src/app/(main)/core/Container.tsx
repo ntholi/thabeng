@@ -25,10 +25,10 @@ function Container({ children, as, width = 'lg', ...props }: Props) {
       className: twMerge(
         'container mx-auto px-4 py-4 sm:px-6',
         widthMap[width],
-        props.className
+        props.className,
       ),
     },
-    children
+    children,
   );
 }
 

@@ -1,17 +1,34 @@
+import { Beverage } from '@/app/(admin)/admin/restaurant/beverages/Beverage';
 import { Meal } from '@/app/(admin)/admin/restaurant/meals/Meal';
-import { MenuItem } from '@/app/(admin)/admin/restaurant/menu/MenuItem';
+import {
+  MenuItem,
+  MenuItemType,
+} from '@/app/(admin)/admin/restaurant/menu/MenuItem';
+import { formatMoney } from '@/lib/utils/format';
+import Container from '../core/Container';
+import { Divider, cn } from '@nextui-org/react';
+import { Salsa } from 'next/font/google';
 
 type Props = {
+  menuType: MenuItemType | null;
   data: MenuItem[];
 };
 
-export default function MenuDisplay({ data }: Props) {
+const font = Salsa({ weight: '400', subsets: ['latin'] });
+
+export default function MenuDisplay({ data, menuType }: Props) {
   return (
-    <div className='col-span-1 grid gap-10 sm:col-span-2'>
-      {data.map((it) => (
-        <ItemSwitch value={it} />
-      ))}
-    </div>
+    <Container width='sm' className='mt-10'>
+      <h1 className={cn(font.className, 'text-5xl font-light')}>
+        {menuType} Menu
+      </h1>
+      <Divider className='my-3' />
+      <div className='grid grid-cols-1 gap-10 sm:grid-cols-2'>
+        {data.map((it) => (
+          <ItemSwitch value={it} />
+        ))}
+      </div>
+    </Container>
   );
 }
 
@@ -20,7 +37,9 @@ function ItemSwitch({ value }: { value: MenuItem }) {
     case 'Meals':
       return <MealDisplay value={value as Meal} />;
     case 'Desserts':
+      return <MealDisplay value={value as Meal} />;
     case 'Beverages':
+      return <BeverageDisplay value={value as Beverage} />;
     case 'Cocktails':
     case 'Gin & Tonic':
     case 'Wine':
@@ -29,10 +48,25 @@ function ItemSwitch({ value }: { value: MenuItem }) {
 
 function MealDisplay({ value }: { value: Meal }) {
   return (
+    <div>
+      <div className='flex justify-between'>
+        <p className='font-semibold'>{value.name}</p>
+        <p className='text-blue-900/90'>{formatMoney(value.price)}</p>
+      </div>
+      <p className='text-sm text-gray-500'>{value.description}</p>
+    </div>
+  );
+}
+
+function BeverageDisplay({ value }: { value: Beverage }) {
+  return (
     <div className='flex justify-between'>
       <div>
-        <p>{value.name}</p>
-        <p>{value.description}</p>
+        <p>
+          <span>{value.name}</span>
+          <span>{value.size}</span>
+        </p>
+        <p>{value.category}</p>
       </div>
       <p>{value.price}</p>
     </div>
