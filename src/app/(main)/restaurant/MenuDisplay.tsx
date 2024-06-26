@@ -18,7 +18,7 @@ const font = Salsa({ weight: '400', subsets: ['latin'] });
 
 export default function MenuDisplay({ data, menuType }: Props) {
   return (
-    <Container width='md' className='mt-10'>
+    <Container width='md' className='pt-20'>
       <h1 className={cn(font.className, 'text-5xl font-light')}>
         {menuType} Menu
       </h1>

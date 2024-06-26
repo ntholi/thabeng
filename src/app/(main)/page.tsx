@@ -57,7 +57,7 @@ export default function Home() {
         </nav>
       </header>
       <div className='h-[90vh]'></div>
-      <main className='bg-blue-900/5'>
+      <main>
         <Hotel />
       </main>
     </>
