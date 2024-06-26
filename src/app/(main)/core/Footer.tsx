@@ -29,8 +29,8 @@ async function Footer({ docSnapshot }: Props) {
   return (
     <Container>
       <div className='mt-2' id='about-us'>
-        <h1 className={cn('mb-5 text-5xl', font.className)}>About Us</h1>
-        <p className='text-sm text-gray-800'>{page?.aboutUs}</p>
+        <h1 className={cn('pt-16 text-3xl', font.className)}>About Us</h1>
+        <p className='py-8 text-sm text-gray-800'>{page?.aboutUs}</p>
       </div>
       <div className='mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4'>
         <div className='sm:col-span-2'>
