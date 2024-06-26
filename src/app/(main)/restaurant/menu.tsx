@@ -13,6 +13,7 @@ import {
   menuItemRepository,
 } from '@/app/(admin)/admin/restaurant/menu/menuItemRepository';
 import MenuDisplay from './MenuDisplay';
+import { Meal } from '@/app/(admin)/admin/restaurant/meals/Meal';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
@@ -41,7 +42,18 @@ export default function Menu() {
   }, []);
 
   function handleSelect(type: MenuItemType) {
-    setFiltered(data.filter((it) => it.type === type));
+    const typeSpecific = data.filter((it) => it.type === type);
+    if (type === 'Meals') {
+      setFiltered(
+        typeSpecific.filter((it) => (it as Meal)?.category !== 'Dessert'),
+      );
+    } else if (type === 'Desserts') {
+      setFiltered(
+        typeSpecific.filter((it) => (it as Meal)?.category === 'Dessert'),
+      );
+    } else {
+      setFiltered(typeSpecific);
+    }
     setSelected(type);
   }
 

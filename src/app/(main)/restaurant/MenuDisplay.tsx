@@ -51,7 +51,7 @@ function MealDisplay({ value }: { value: Meal }) {
     <div>
       <div className='flex justify-between'>
         <p className='font-semibold'>{value.name}</p>
-        <p className='text-blue-900/90'>{formatMoney(value.price)}</p>
+        <p className='text-sm text-blue-900/90'>{formatMoney(value.price)}</p>
       </div>
       <p className='text-sm text-gray-500'>{value.description}</p>
     </div>
