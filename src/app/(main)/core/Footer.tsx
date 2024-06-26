@@ -3,6 +3,11 @@ import { DocumentSnapshot, doc, getDoc } from 'firebase/firestore';
 import { Image } from '@nextui-org/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
+import Container from './Container';
+import { Salsa } from 'next/font/google';
+import { cn } from '@nextui-org/react';
+
+const font = Salsa({ weight: '400', subsets: ['latin'] });
 
 export default async function FooterWrapper() {
   const snapshot = getDoc(doc(db, 'pages', 'about-us'));
@@ -22,8 +27,12 @@ type Props = {
 async function Footer({ docSnapshot }: Props) {
   const page = (await docSnapshot).data() as AboutUs;
   return (
-    <div className='container mx-auto px-4 sm:max-w-xl md:max-w-full md:px-24 lg:w-screen lg:px-28'>
-      <div className='row-gap-6 mb-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-4'>
+    <Container>
+      <div className='mt-2' id='about-us'>
+        <h1 className={cn('mb-5 text-5xl', font.className)}>About Us</h1>
+        <p className='text-sm text-gray-800'>{page?.aboutUs}</p>
+      </div>
+      <div className='mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4'>
         <div className='sm:col-span-2'>
           <Link
             href='/'
@@ -37,9 +46,6 @@ async function Footer({ docSnapshot }: Props) {
               alt='logo'
             />
           </Link>
-          <div className='mt-6 lg:max-w-sm' id='about-us'>
-            <p className='text-sm text-gray-800'>{page?.aboutUs}</p>
-          </div>
         </div>
         <div className='space-y-2 text-sm'>
           <p className='text-base font-bold tracking-wide text-gray-900'>
@@ -149,6 +155,6 @@ async function Footer({ docSnapshot }: Props) {
           </li>
         </ul>
       </div>
-    </div>
+    </Container>
   );
 }

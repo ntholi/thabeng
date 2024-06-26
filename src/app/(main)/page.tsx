@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { Button, Divider } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import { Salsa } from 'next/font/google';
 import Link from 'next/link';
 import {
@@ -7,8 +7,6 @@ import {
   MdCalendarMonth,
   MdHotel,
 } from 'react-icons/md';
-import Container from './core/Container';
-import Footer from './core/Footer';
 import Hotel from './home/Hotel';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
@@ -61,11 +59,7 @@ export default function Home() {
       <div className='h-[90vh]'></div>
       <main className='bg-blue-900/5'>
         <Hotel />
-        <Container className='px-0 py-0 sm:px-0'>
-          <Divider />
-        </Container>
       </main>
-      <Footer />
     </>
   );
 }
