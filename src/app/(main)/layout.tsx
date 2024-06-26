@@ -24,6 +24,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
+          <div className='h-[10vh]'></div>
           <Footer />
         </Providers>
       </body>
