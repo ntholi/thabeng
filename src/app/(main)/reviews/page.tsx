@@ -2,6 +2,7 @@ import React from 'react';
 import Container from '../core/Container';
 import { Salsa } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import NewReview from './NewReview';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
@@ -15,7 +16,9 @@ export default function ReviewPage() {
         <span className='text-gray-500'>Customer</span>{' '}
         <span className='font-bold text-gray-800'>Reviews</span>
       </h2>
-      <Container>xx</Container>
+      <Container>
+        <NewReview />
+      </Container>
     </>
   );
 }
