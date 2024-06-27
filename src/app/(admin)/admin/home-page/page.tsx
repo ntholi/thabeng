@@ -1,38 +1,39 @@
 'use client';
-import { Box, Button, Select, useComputedColorScheme } from '@mantine/core';
-import { useEffect, useState } from 'react';
-import { Post } from '../posts/Post';
-import { postRepository } from '../posts/repository';
+import { ImagePicker } from '@/app/(admin)/admin-core';
+import {
+  Button,
+  Stack,
+  TextInput,
+  useComputedColorScheme,
+} from '@mantine/core';
+import { useEffect, useState, useTransition } from 'react';
 import { homePageRepository } from './repository';
 
 export default function LandingPage() {
-  const [homePost, setHomePost] = useState<HomePage | null>(null);
-  const [data, setData] = useState<Post[]>([]);
+  const [image, setImage] = useState<string>();
+  const [tagline, setTagline] = useState<string>();
   const colorScheme = useComputedColorScheme();
+  const [pending, startTransition] = useTransition();
 
   useEffect(() => {
-    homePageRepository.getPost().then((it) => {
-      if (it) {
-        setHomePost({
-          value: it.value,
-          label: it.label,
-        });
-      }
+    homePageRepository.getHomePage().then((it) => {
+      if (!it) return;
+      setImage(it.backgroundImage);
+      setTagline(it.tagline);
     });
-    postRepository.getAll().then(setData);
   }, []);
 
   function handleSave() {
-    if (homePost) {
-      homePageRepository.setPost({
-        value: homePost.value,
-        label: homePost.label,
+    startTransition(async () => {
+      await homePageRepository.setHomePage({
+        backgroundImage: image,
+        tagline,
       });
-    }
+    });
   }
 
   return (
-    <Box
+    <Stack
       px={{
         base: 'xl',
         md: 200,
@@ -40,46 +41,31 @@ export default function LandingPage() {
       }}
       py={{
         base: 'lg',
-        sm: 100,
+        sm: 70,
       }}
     >
-      <Select
-        searchable
-        clearable
-        label={'Home Page Post'}
-        value={homePost?.value}
-        onChange={(_, options) => {
-          if (options) {
-            const post = data.find((it) => it.id === options.value);
-            if (!post) {
-              throw new Error('Post not found');
-            }
-            setHomePost({
-              value: post.id,
-              label: post.title,
-            });
-            console.log(homePost);
-          }
-        }}
-        data={data.map((it) => {
-          if (!it.id) {
-            throw new Error('Resource does not have an id');
-          }
-          return {
-            value: it.id,
-            label: it.title,
-          };
-        })}
+      <ImagePicker
+        name='Background Image'
+        value={image}
+        onChange={(it: string) => setImage(it)}
+        folder='restaurant-page'
+        height={200}
+      />
+      <TextInput
+        value={tagline}
+        onChange={(e) => setTagline(e.currentTarget.value)}
+        placeholder='Tagline'
       />
       <Button
         color='dark'
         mt={'lg'}
         fullWidth
+        loading={pending}
         onClick={handleSave}
         variant={colorScheme === 'dark' ? 'default' : 'filled'}
       >
         Save
       </Button>
-    </Box>
+    </Stack>
   );
 }

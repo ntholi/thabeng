@@ -8,19 +8,20 @@ import {
   MdHotel,
 } from 'react-icons/md';
 import Hotel from './home/Hotel';
+import { homePageRepository } from '../(admin)/admin/home-page/repository';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
-export default function Home() {
-  const banner = '/images/test-image.jpg';
+export default async function Home() {
+  const homePage = await homePageRepository.getHomePage();
   return (
     <>
       <header
         style={{
-          backgroundImage: `url(${banner})`,
+          backgroundImage: `url(${homePage?.backgroundImage ?? 'test-image.jpg'})`,
         }}
         className={cn(
-          'absolute top-0 h-dvh w-full bg-black/15 bg-cover bg-center text-white bg-blend-overlay',
+          'absolute top-0 min-h-dvh w-full bg-black/15 bg-cover bg-center text-white bg-blend-overlay',
           'flex flex-col items-center justify-center',
         )}
       >
@@ -33,7 +34,7 @@ export default function Home() {
           <h1 className={cn(font.className, 'text-5xl font-bold sm:text-7xl')}>
             Thabeng Hotel
           </h1>
-          <p className='text-lg sm:text-xl'>Your Home Away From Home</p>
+          <p className='text-lg sm:text-xl'>{homePage?.tagline}</p>
           <div className='text-center'>
             <Button
               variant='bordered'

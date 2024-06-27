@@ -1,15 +1,13 @@
 import { db } from '@/lib/config/firebase';
-import { doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
-import { Post } from '../posts/Post';
-import { postRepository } from '../posts/repository';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 class HomePageRepository {
-  async setPost(post: HomePage) {
-    await setDoc(doc(db, 'home-page', 'default'), post);
+  async setHomePage(homePage: HomePage) {
+    await setDoc(doc(db, 'homePage', 'default'), homePage);
   }
 
-  async getPost() {
-    const docRef = doc(db, 'home-page', 'default');
+  async getHomePage() {
+    const docRef = doc(db, 'homePage', 'default');
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       return docSnap.data() as HomePage;
