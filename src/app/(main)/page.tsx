@@ -55,7 +55,7 @@ export default async function Home() {
           )}
         >
           <ClickableCard icon={MdHotel} text='Hotel' href='#hotel' />
-          <ClickableCard icon={FastFood} text='Restaurant' href='#restaurant' />
+          <ClickableCard icon={FastFood} text='Restaurant' href='/restaurant' />
           <ClickableCard icon={MdCalendarMonth} text='Events' href='/events' />
         </nav>
       </header>
