@@ -5,6 +5,7 @@ import { Button, Textarea } from '@nextui-org/react';
 import Container from '../core/Container';
 import StarRatingComponent from 'react-star-rating-component';
 import { reviewRepository } from '@/app/(admin)/admin/reviews/repository';
+import { IconCheck } from '@tabler/icons-react';
 
 interface ReviewData {
   rating: number;
@@ -17,6 +18,7 @@ export default function NewReview(): React.ReactElement {
     review: '',
   });
   const [submitting, startSubmitting] = useTransition();
+  const [submitted, setSubmitted] = useState(false);
 
   const handleRatingChange = (nextValue: number): void => {
     setReviewData((prevData) => ({ ...prevData, rating: nextValue }));
@@ -33,6 +35,7 @@ export default function NewReview(): React.ReactElement {
         comment: reviewData.review,
         rating: reviewData.rating,
       });
+      setSubmitted(true);
     });
   };
 
@@ -71,7 +74,13 @@ export default function NewReview(): React.ReactElement {
           starColor='#ffb400'
           emptyStarColor='#ddd'
         />
-        <Button variant='flat' onClick={handleSubmit} isLoading={submitting}>
+        <Button
+          variant='flat'
+          isDisabled={submitted}
+          endContent={submitted && <IconCheck size={20} />}
+          onClick={handleSubmit}
+          isLoading={submitting}
+        >
           Submit
         </Button>
       </footer>
