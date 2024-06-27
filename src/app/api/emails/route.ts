@@ -1,4 +1,3 @@
-// app/api/send-email/route.js
 import { NextRequest, NextResponse } from 'next/server';
 import { sendMail } from './service';
 

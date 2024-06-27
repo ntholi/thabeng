@@ -18,6 +18,7 @@ import {
   IconLogout2,
   IconMeat,
   IconNews,
+  IconSettings,
   IconToolsKitchen,
   IconUserEdit,
   IconWallpaper,
@@ -73,7 +74,6 @@ export default function Navigation() {
         <NavLink
           label='Restaurant'
           leftSection={<IconToolsKitchen size='1.1rem' />}
-          opened
         >
           <NavLink
             label='Page'
@@ -154,6 +154,14 @@ export default function Navigation() {
           active={pathname.startsWith('/admin/about-us')}
           href={'/admin/about-us'}
           leftSection={<IconCalendarEvent size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
+        />
+        <NavLink
+          label='Settings'
+          component={Link}
+          active={pathname.startsWith('/admin/settings')}
+          href={'/admin/settings'}
+          leftSection={<IconSettings size='1.1rem' />}
           rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
       </AppShell.Section>
