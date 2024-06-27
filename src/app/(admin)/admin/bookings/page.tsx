@@ -19,7 +19,7 @@ export default function BookingPage() {
       repository={bookingRepository}
       details={BookingDetails}
       navLinkProps={(it) => ({
-        label: `${it.user.name}`,
+        label: `${it?.user?.name || 'Guest'}`,
         description: `${it.room.name} - ${date(it.checkIn)}`,
         rightSection: <StatusIcon seen={it.seen} />,
       })}
@@ -43,9 +43,9 @@ function BookingDetails({ item }: { item: Booking }) {
           Guest Details
         </Title>
         <Stack mt={'xl'}>
-          <FieldView label='Name' value={item.user.name} />
-          <FieldView label='Phone' value={item.user.phoneNumber} />
-          <FieldView label='Email' value={item.user.email} />
+          <FieldView label='Name' value={item?.user?.name} />
+          <FieldView label='Phone' value={item?.user?.phoneNumber} />
+          <FieldView label='Email' value={item?.user?.email} />
         </Stack>
       </Card>
     </DetailsView>
