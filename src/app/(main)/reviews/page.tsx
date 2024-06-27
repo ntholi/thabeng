@@ -3,6 +3,7 @@ import Container from '../core/Container';
 import { Salsa } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import NewReview from './NewReview';
+import ReviewList from './ReviewList';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
@@ -19,6 +20,7 @@ export default function ReviewPage() {
       <Container>
         <NewReview />
       </Container>
+      <ReviewList />
     </>
   );
 }

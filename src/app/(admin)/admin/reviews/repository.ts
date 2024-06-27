@@ -1,6 +1,7 @@
 import {
   collection,
   onSnapshot,
+  orderBy,
   query,
   updateDoc,
   where,
@@ -40,6 +41,15 @@ class ReviewRepository extends FirebaseRepository<Review> {
       callback(snapshot.docs.length);
     });
     return unsubscribe;
+  }
+
+  publicReviews() {
+    const q = query(
+      collection(db, this.collectionName),
+      where('isPublic', '==', true),
+      orderBy('createdAt', 'desc'),
+    );
+    return this.getDocs(q);
   }
 }
 

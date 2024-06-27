@@ -60,7 +60,7 @@ export default function NewReview(): React.ReactElement {
     <Container width={'sm'} className='flex flex-col gap-4'>
       <Textarea
         label='Review'
-        placeholder='Please give us your feedback here...'
+        placeholder='Please give us your feedback...'
         value={reviewData.review}
         onChange={handleReviewChange}
       />
