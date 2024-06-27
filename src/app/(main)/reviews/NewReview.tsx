@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useTransition } from 'react';
 import { Button, Textarea } from '@nextui-org/react';
 import Container from '../core/Container';
 import StarRatingComponent from 'react-star-rating-component';
+import { reviewRepository } from '@/app/(admin)/admin/reviews/repository';
 
 interface ReviewData {
   rating: number;
@@ -15,6 +16,7 @@ export default function NewReview(): React.ReactElement {
     rating: 0,
     review: '',
   });
+  const [submitting, startSubmitting] = useTransition();
 
   const handleRatingChange = (nextValue: number): void => {
     setReviewData((prevData) => ({ ...prevData, rating: nextValue }));
@@ -26,8 +28,12 @@ export default function NewReview(): React.ReactElement {
   };
 
   const handleSubmit = (): void => {
-    console.log('Submitting review:', reviewData);
-    // Here you would typically send the data to your backend
+    startSubmitting(async () => {
+      await reviewRepository.create({
+        comment: reviewData.review,
+        rating: reviewData.rating,
+      });
+    });
   };
 
   const renderStarIcon = (
@@ -65,7 +71,7 @@ export default function NewReview(): React.ReactElement {
           starColor='#ffb400'
           emptyStarColor='#ddd'
         />
-        <Button variant='flat' onClick={handleSubmit}>
+        <Button variant='flat' onClick={handleSubmit} isLoading={submitting}>
           Submit
         </Button>
       </footer>

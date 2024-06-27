@@ -14,7 +14,7 @@ export default function ReviewPage() {
       repository={reviewRepository}
       details={ReviewDetails}
       navLinkProps={(it) => ({
-        label: `${it.user?.name}`,
+        label: `${it.rating} Stars`,
         rightSection: <StatusIcon seen={it.seen} />,
       })}
     />
@@ -25,15 +25,14 @@ function ReviewDetails({ item }: { item: Review }) {
   reviewRepository.markAsSeen(item.id);
   return (
     <DetailsView>
-      <FieldView label='User' value={item.user.name} />
       <FieldView label='Rating' value={item.rating} />
       <FieldView label='Date' value={date(item.createdAt)} />
       <Card withBorder>
-        <Title order={2} fw={'lighter'}>
+        <Title order={3} fw={'lighter'}>
           Comments
         </Title>
-        <Stack mt={'xl'}>
-          <Text>{item.comment}</Text>
+        <Stack mt={'sm'}>
+          <Text size='sm'>{item.comment}</Text>
         </Stack>
       </Card>
     </DetailsView>
