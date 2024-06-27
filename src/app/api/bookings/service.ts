@@ -1,7 +1,7 @@
-import { Booking } from '../../../(admin)/admin/bookings/Booking';
+import { Booking } from '../../(admin)/admin/bookings/Booking';
 import axios from 'axios';
-import { bookingRepository } from '../../../(admin)/admin/bookings/repository';
-import { settingsRepository } from '../../../(admin)/admin/settings/repository';
+import { bookingRepository } from '../../(admin)/admin/bookings/repository';
+import { settingsRepository } from '../../(admin)/admin/settings/repository';
 import { ResourceCreate } from '@/app/(admin)/admin-core/repository/repository';
 import { dateTime } from '@/lib/utils/format';
 

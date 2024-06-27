@@ -16,7 +16,7 @@ import {
 } from '@nextui-org/react';
 import { IconCheck, IconHandClick } from '@tabler/icons-react';
 import { bookingRepository } from '@/app/(admin)/admin/bookings/repository';
-import { processBooking } from './service';
+import { processBooking } from '../../../api/bookings/service';
 
 type Prop = {
   roomId: string;
