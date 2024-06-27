@@ -6,6 +6,7 @@ import { Card, Stack, Text, Title } from '@mantine/core';
 import { IconExclamationCircle } from '@tabler/icons-react';
 import { Review } from './Review';
 import { reviewRepository } from './repository';
+import MakePublicSwitch from './MakePublicSwitch';
 
 export default function ReviewPage() {
   return (
@@ -25,6 +26,7 @@ function ReviewDetails({ item }: { item: Review }) {
   reviewRepository.markAsSeen(item.id);
   return (
     <DetailsView>
+      <MakePublicSwitch review={item} />
       <FieldView label='Rating' value={item.rating} />
       <FieldView label='Date' value={date(item.createdAt)} />
       <Card withBorder>

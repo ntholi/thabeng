@@ -23,8 +23,12 @@ class ReviewRepository extends FirebaseRepository<Review> {
     return super.create(data);
   }
 
-  markAsSeen(id: string) {
-    updateDoc(this.docRef(id), { seen: true });
+  async markAsSeen(id: string) {
+    await updateDoc(this.docRef(id), { seen: true });
+  }
+
+  async updatePublishStatus(id: string, isPublic: boolean) {
+    await updateDoc(this.docRef(id), { isPublic });
   }
 
   unseenReviews(callback: (count: number) => void) {
