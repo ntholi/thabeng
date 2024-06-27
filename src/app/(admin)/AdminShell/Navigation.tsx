@@ -17,6 +17,7 @@ import {
   IconIceCream,
   IconLogout2,
   IconMeat,
+  IconMessages,
   IconNews,
   IconSettings,
   IconToolsKitchen,
@@ -146,6 +147,14 @@ export default function Navigation() {
           active={pathname.startsWith('/admin/events')}
           href={'/admin/events'}
           leftSection={<IconCalendarEvent size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
+        />
+        <NavLink
+          label='Reviews'
+          component={Link}
+          active={pathname.startsWith('/admin/reviews')}
+          href={'/admin/reviews'}
+          leftSection={<IconMessages size='1.1rem' />}
           rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
         <NavLink
