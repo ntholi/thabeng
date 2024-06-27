@@ -29,10 +29,10 @@ async function Footer({ docSnapshot }: Props) {
   const page = (await docSnapshot).data() as AboutUs;
   return (
     <Container className='h-[90vh]'>
-      <div className='mt-2' id='about-us'>
+      <div className='mt-2 py-8' id='about-us'>
         <h1 className={cn('pt-16 text-3xl', font.className)}>About Us</h1>
-        <div className='grid grid-cols-2 gap-2'>
-          <p className='w-full py-8 text-sm text-gray-800'>{page?.aboutUs}</p>
+        <div className='mt-3 grid grid-cols-2 gap-2 sm:gap-8'>
+          <p className='w-full text-sm text-gray-800'>{page?.aboutUs}</p>
           <div className='w-full'>
             <MapDisplay />
           </div>
