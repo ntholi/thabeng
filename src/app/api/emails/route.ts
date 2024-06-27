@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { sendMail } from './service';
 
 export async function POST(request: NextRequest) {
-  const to = process.env.EMAIL_RECIPIENT || '';
-  const { subject, text } = await request.json();
+  const { to, subject, text } = await request.json();
 
   try {
     let info = await sendMail(to, subject, text);

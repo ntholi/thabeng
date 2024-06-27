@@ -1,22 +1,22 @@
 'use client';
 import React, { useEffect, useState, useTransition } from 'react';
 
+import { ResourceCreate } from '@/app/(admin)/admin-core/repository/repository';
+import { Booking } from '@/app/(admin)/admin/bookings/Booking';
 import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Button,
-  useDisclosure,
-  Input,
-  DateInput,
-  DateValue,
   DatePicker,
+  DateValue,
+  Input,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  useDisclosure,
 } from '@nextui-org/react';
 import { IconCheck, IconHandClick } from '@tabler/icons-react';
-import { bookingRepository } from '@/app/(admin)/admin/bookings/repository';
-import { processBooking } from '../../../api/bookings/service';
+import axios from 'axios';
 
 type Prop = {
   roomId: string;
@@ -43,7 +43,7 @@ export default function BookingModal({ roomId, roomName }: Prop) {
 
   function handleBooking() {
     startTransition(async () => {
-      await processBooking({
+      const booking: ResourceCreate<Booking> = {
         room: { id: roomId, name: roomName },
         user: {
           name,
@@ -51,7 +51,8 @@ export default function BookingModal({ roomId, roomName }: Prop) {
           phoneNumber,
         },
         checkIn: checkInDate?.toDate(timeZone) || new Date(),
-      });
+      };
+      axios.post('/api/bookings', booking);
       setBooked(true);
     });
   }

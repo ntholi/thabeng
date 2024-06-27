@@ -5,10 +5,10 @@ export interface Booking extends Resource {
     id: string;
     name: string;
   };
-  user: {
-    name: string;
-    email: string;
-    phoneNumber: string;
+  user?: {
+    name?: string;
+    email?: string;
+    phoneNumber?: string;
   };
   checkIn: Date;
   seen?: boolean;

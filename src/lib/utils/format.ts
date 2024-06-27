@@ -22,11 +22,11 @@ export function date(date: Date | undefined | null | Timestamp) {
     return 'Invalid Date';
   }
 }
-export function dateTime(date: Date | undefined | null | Timestamp) {
+export function dateTime(date: Date | undefined | null | Timestamp | string) {
   if (!date) return '';
   const formatter = new Intl.DateTimeFormat('en-LS', {
     year: 'numeric',
-    month: 'short',
+    month: 'long',
     day: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
@@ -35,7 +35,7 @@ export function dateTime(date: Date | undefined | null | Timestamp) {
     if (date instanceof Timestamp) {
       return formatter.format(date.toDate());
     }
-    return formatter.format(date);
+    return formatter.format(new Date(date));
   } catch (e) {
     console.error('Error formatting date', date);
     return 'Invalid Date';
