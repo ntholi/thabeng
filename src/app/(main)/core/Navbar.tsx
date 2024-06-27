@@ -37,6 +37,10 @@ export default function Navbar() {
       label: 'Posts',
       href: '/posts',
     },
+    {
+      label: 'Reviews',
+      href: '/reviews',
+    },
   ];
 
   return (
