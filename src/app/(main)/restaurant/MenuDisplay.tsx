@@ -23,7 +23,7 @@ export default function MenuDisplay({ data, menuType }: Props) {
         {menuType} Menu
       </h1>
       <Divider className='my-3' />
-      <div className='grid grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2'>
+      <div className='grid grid-cols-1 gap-x-16 gap-y-5 sm:grid-cols-2'>
         {data.map((it) => (
           <ItemSwitch value={it} />
         ))}
