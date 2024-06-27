@@ -30,7 +30,7 @@ class BookingRepository extends FirebaseRepository<Booking> {
   unseenBookings(callback: (count: number) => void) {
     const q = query(
       collection(db, this.collectionName),
-      where('seen', '==', false)
+      where('seen', '==', false),
     );
     const unsubscribe = onSnapshot(q, (snapshot) => {
       callback(snapshot.docs.length);

@@ -16,6 +16,7 @@ import {
 } from '@nextui-org/react';
 import { IconCheck, IconHandClick } from '@tabler/icons-react';
 import { bookingRepository } from '@/app/(admin)/admin/bookings/repository';
+import { processBooking } from './service';
 
 type Prop = {
   roomId: string;
@@ -42,7 +43,7 @@ export default function BookingModal({ roomId, roomName }: Prop) {
 
   function handleBooking() {
     startTransition(async () => {
-      await bookingRepository.create({
+      await processBooking({
         room: { id: roomId, name: roomName },
         user: {
           name,
