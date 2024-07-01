@@ -51,8 +51,8 @@ function MealTimeCreate(props: CreateViewProps<MealTime>) {
     <CreateView {...props}>
       <SelectField name='name' options={[...MealTimeNames]} />
       <NumberField name='price' />
-      <TimeInput name='startTime' />
-      <TimeInput name='endTime' />
+      <TimeInput label='Start Time' name='startTime' />
+      <TimeInput lang='End Time' name='endTime' />
       <Textarea name='description' />
     </CreateView>
   );
@@ -63,8 +63,8 @@ function MealTimeEdit(props: EditViewProps<MealTime>) {
     <EditView {...props}>
       <SelectField name='name' options={[...MealTimeNames]} />
       <NumberField name='price' />
-      <TimeInput name='startTime' />
-      <TimeInput name='endTime' />
+      <TimeInput label='Start Time' name='startTime' />
+      <TimeInput lang='End Time' name='endTime' />
       <Textarea name='description' />
     </EditView>
   );

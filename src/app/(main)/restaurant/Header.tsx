@@ -60,10 +60,14 @@ async function MealTimeDisplay() {
             <Icon mealName={it.name} />
             <h4>{it.name}</h4>
             <div className='flex flex-col items-center gap-2 xl:flex-row'>
-              <p className='text-xs text-green-200 md:text-sm'>
-                {formatMoney(it.price)}
-              </p>
-              <span className='hidden xl:block'>•</span>
+              {it.price && (
+                <>
+                  <p className='text-xs text-green-200 md:text-sm'>
+                    {formatMoney(it.price)}
+                  </p>
+                  <span className='hidden xl:block'>•</span>
+                </>
+              )}
               <p className='hidden text-xs md:block md:text-sm'>
                 {convertTime(it.startTime)} - {convertTime(it.endTime)}
               </p>
