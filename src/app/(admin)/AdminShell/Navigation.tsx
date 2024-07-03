@@ -19,6 +19,7 @@ import {
   IconMeat,
   IconMessages,
   IconNews,
+  IconPhoto,
   IconSettings,
   IconToolsKitchen,
   IconUserEdit,
@@ -52,6 +53,14 @@ export default function Navigation() {
           active={pathname.startsWith('/admin/posts')}
           href={'/admin/posts'}
           leftSection={<IconNews size='1.1rem' />}
+          rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
+        />
+        <NavLink
+          label='Gallery'
+          component={Link}
+          active={pathname.startsWith('/admin/gallery')}
+          href={'/admin/gallery'}
+          leftSection={<IconPhoto size='1.1rem' />}
           rightSection={<IconChevronRight size='0.8rem' stroke={1.5} />}
         />
         <NotificationIndicator label={unseenBookings}>

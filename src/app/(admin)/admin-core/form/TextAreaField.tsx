@@ -6,7 +6,7 @@ type Props = {
   rows?: number;
 } & InputProps;
 
-export default function TextField(props: Props) {
+export default function TextAreaField(props: Props) {
   const label = props.label || variableToLabel(props.name || '');
   return (
     <Textarea
