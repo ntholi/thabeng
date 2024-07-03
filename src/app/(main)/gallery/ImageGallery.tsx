@@ -1,24 +1,12 @@
+'use client';
+import { GalleryImage } from '@/app/(admin)/admin/gallery/image';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import React, { useState } from 'react';
 
-interface Image {
-  id: number;
-  src: string;
-  alt: string;
-}
+export default function ImageGallery({ images }: { images: GalleryImage[] }) {
+  const [currentImage, setCurrentImage] = useState<GalleryImage>(images[0]);
 
-export default function ImageGallery() {
-  const images: Image[] = [
-    { id: 1, src: '/api/placeholder/800/600', alt: 'Image 1' },
-    { id: 2, src: '/api/placeholder/800/600', alt: 'Image 2' },
-    { id: 3, src: '/api/placeholder/800/600', alt: 'Image 3' },
-    { id: 4, src: '/api/placeholder/800/600', alt: 'Image 4' },
-    { id: 5, src: '/api/placeholder/800/600', alt: 'Image 5' },
-  ];
-
-  const [currentImage, setCurrentImage] = useState<Image>(images[0]);
-
-  const handleThumbnailClick = (image: Image): void => {
+  const handleThumbnailClick = (image: GalleryImage): void => {
     setCurrentImage(image);
   };
 
@@ -38,8 +26,8 @@ export default function ImageGallery() {
     <div className='mx-auto max-w-4xl p-4'>
       <div className='relative'>
         <img
-          src={currentImage.src}
-          alt={currentImage.alt}
+          src={currentImage.image}
+          alt={'Thabeng Hotel'}
           className='h-96 w-full rounded-lg object-cover shadow-lg'
         />
         <button
@@ -59,8 +47,8 @@ export default function ImageGallery() {
         {images.map((image) => (
           <img
             key={image.id}
-            src={image.src}
-            alt={image.alt}
+            src={image.image}
+            alt={'Thabeng Hotel'}
             className={`h-20 w-20 cursor-pointer rounded-md object-cover ${currentImage.id === image.id ? 'border-2 border-blue-500' : ''}`}
             onClick={() => handleThumbnailClick(image)}
           />
