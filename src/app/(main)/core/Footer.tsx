@@ -13,7 +13,7 @@ const font = Salsa({ weight: '400', subsets: ['latin'] });
 export default async function FooterWrapper() {
   const snapshot = getDoc(doc(db, 'pages', 'about-us'));
   return (
-    <footer className='flex h-[80vh] items-center justify-center border-t bg-slate-50'>
+    <footer className='flex min-h-[80vh] items-center justify-center border-t bg-slate-50'>
       <Suspense fallback={<div>Loading...</div>}>
         <Footer docSnapshot={snapshot} />
       </Suspense>
