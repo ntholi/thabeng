@@ -1,6 +1,7 @@
 'use client';
 import { GalleryImage } from '@/app/(admin)/admin/gallery/image';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 export default function ImageGallery({ images }: { images: GalleryImage[] }) {
@@ -25,10 +26,12 @@ export default function ImageGallery({ images }: { images: GalleryImage[] }) {
   return (
     <div className='mx-auto max-w-4xl p-4'>
       <div className='relative'>
-        <img
+        <Image
           src={currentImage.image}
+          height={900}
+          width={1300}
           alt={'Thabeng Hotel'}
-          className='h-96 w-full rounded-lg object-cover shadow-lg'
+          className='h-[70vh] w-full rounded-lg object-cover shadow-lg'
         />
         <button
           onClick={handlePrevious}
