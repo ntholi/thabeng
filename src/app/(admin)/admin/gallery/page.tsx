@@ -25,7 +25,10 @@ export default function GalleryPage() {
       create={GalleryCreate}
       edit={GalleryEdit}
       details={GalleryDetails}
-      navLinkProps={(it) => ({ label: `${shorten(it.caption, 25)}` })}
+      navLinkProps={(it) => ({
+        label: `${shorten(it.caption, 25)}`,
+        leftSection: <Image src={it.image} w={30} h={30} />,
+      })}
     />
   );
 }
