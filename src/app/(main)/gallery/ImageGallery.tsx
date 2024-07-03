@@ -1,5 +1,6 @@
 'use client';
 import { GalleryImage } from '@/app/(admin)/admin/gallery/image';
+import { Button } from '@nextui-org/react';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
@@ -33,18 +34,22 @@ export default function ImageGallery({ images }: { images: GalleryImage[] }) {
           alt={'Thabeng Hotel'}
           className='h-[70vh] w-full rounded-lg object-cover shadow-lg'
         />
-        <button
+        <Button
+          isIconOnly
           onClick={handlePrevious}
-          className='absolute left-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white p-2 shadow-md'
+          radius='full'
+          className='absolute left-2 top-1/2 -translate-y-1/2 transform'
         >
           <IconChevronLeft className='h-6 w-6' />
-        </button>
-        <button
+        </Button>
+        <Button
+          isIconOnly
           onClick={handleNext}
-          className='absolute right-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white p-2 shadow-md'
+          radius='full'
+          className='absolute right-2 top-1/2 -translate-y-1/2 transform'
         >
           <IconChevronRight className='h-6 w-6' />
-        </button>
+        </Button>
       </div>
       <div className='mt-4 flex space-x-2 overflow-x-auto'>
         {images.map((image) => (
