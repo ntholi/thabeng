@@ -6,7 +6,6 @@ import {
   IconBowlSpoon,
   IconBrandBooking,
   IconCalendarEvent,
-  IconCategory,
   IconChevronRight,
   IconClock,
   IconGlass,
@@ -16,21 +15,19 @@ import {
   IconHome,
   IconIceCream,
   IconLogout2,
-  IconMeat,
   IconMessages,
   IconNews,
   IconPhoto,
   IconSettings,
   IconToolsKitchen,
-  IconUserEdit,
   IconWallpaper,
 } from '@tabler/icons-react';
 import { signOut } from 'firebase/auth';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useUnseenBookings } from '../admin/bookings/UnseenBookingsProvider';
 import { useSession } from '../auth/SessionProvider';
 import NotificationIndicator from './NotificationIndicator';
-import { useUnseenBookings } from '../admin/bookings/UnseenBookingsProvider';
 
 export default function Navigation() {
   const pathname = usePathname();
