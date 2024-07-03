@@ -13,7 +13,7 @@ import {
 import { Image } from '@mantine/core';
 import NextImage from 'next/image';
 import TextAreaField from '../../admin-core/form/TextAreaField';
-import { Gallery } from './Gallery';
+import { GalleryImage } from './image';
 import { galleryRepository } from './repository';
 import { shorten } from '@/lib/utils';
 
@@ -33,7 +33,7 @@ export default function GalleryPage() {
   );
 }
 
-function GalleryDetails({ item }: { item: Gallery }) {
+function GalleryDetails({ item }: { item: GalleryImage }) {
   return (
     <DetailsView>
       <Image
@@ -50,7 +50,7 @@ function GalleryDetails({ item }: { item: Gallery }) {
   );
 }
 
-function GalleryCreate(props: CreateViewProps<Gallery>) {
+function GalleryCreate(props: CreateViewProps<GalleryImage>) {
   return (
     <CreateView {...props}>
       <ImagePicker name='image' height={200} folder='gallery' />
@@ -59,7 +59,7 @@ function GalleryCreate(props: CreateViewProps<Gallery>) {
   );
 }
 
-function GalleryEdit(props: EditViewProps<Gallery>) {
+function GalleryEdit(props: EditViewProps<GalleryImage>) {
   return (
     <EditView {...props}>
       <ImagePicker name='image' height={200} folder='gallery' />

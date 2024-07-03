@@ -1,7 +1,6 @@
-import { Timestamp } from 'firebase/firestore';
 import { Resource } from '../../admin-core/repository/repository';
 
-export interface Gallery extends Resource {
+export interface GalleryImage extends Resource {
   caption: string;
   image: string;
 }

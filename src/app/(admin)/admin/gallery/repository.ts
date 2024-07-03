@@ -10,9 +10,9 @@ import {
   setDoc,
 } from 'firebase/firestore';
 import { FirebaseRepository } from '../../admin-core/repository';
-import { Gallery } from './Gallery';
+import { GalleryImage } from './image';
 
-class GalleryRepository extends FirebaseRepository<Gallery> {
+class GalleryRepository extends FirebaseRepository<GalleryImage> {
   constructor() {
     super('gallery');
   }
