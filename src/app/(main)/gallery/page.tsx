@@ -4,5 +4,11 @@ import ImageGallery from './ImageGallery';
 
 export default async function GalleryPage() {
   const images = await galleryRepository.getAll();
+  if (!images)
+    return (
+      <div className='mt-20 flex items-center justify-center'>
+        <h1 className='text-lg text-gray-500'>Empty</h1>
+      </div>
+    );
   return <ImageGallery images={images} />;
 }
