@@ -11,7 +11,7 @@ import { homePageRepository } from './repository';
 
 export default function LandingPage() {
   const [image, setImage] = useState<string>();
-  const [tagline, setTagline] = useState<string>();
+  const [tagline, setTagline] = useState<string>('');
   const colorScheme = useComputedColorScheme();
   const [pending, startTransition] = useTransition();
 
