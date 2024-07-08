@@ -10,7 +10,9 @@ type Props = {
 };
 
 export default function PhotoInput({ form }: Props) {
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<string[]>(
+    (form.values.images as string[]) ?? [],
+  );
 
   useEffect(() => {
     form.setFieldValue('images', images);

@@ -27,7 +27,7 @@ export default function RoomPage() {
       resourceLabel='Rooms'
       repository={roomRepository}
       create={RoomForm}
-      edit={RoomEdit}
+      edit={RoomForm}
       details={Details}
       navLinkProps={(it) => ({ label: `${it.name}` })}
     ></ResourcePage>

@@ -6,18 +6,30 @@ import { IconBedFilled, IconInfoSquare, IconPhoto } from '@tabler/icons-react';
 import { useQueryState } from 'nuqs';
 import SubmitButton from '../../../admin-core/form/SubmitButton';
 import { Room } from '../Room';
-import { roomRepository } from '../repository';
+import { RoomRepository, roomRepository } from '../repository';
 import BasicDetails from './BasicInfoInput';
 import PhotoInput from './PhotoInput';
 import AmenitiesInput from './AmenitiesInput';
+import { Repository } from '@/app/(admin)/admin-core/repository/repository';
 
-export default function RoomForm() {
-  const form = useForm<Room>({});
+type Props = {
+  resource?: Room;
+  repository?: Repository<Room>;
+};
+export default function RoomForm({ resource }: Props) {
+  const form = useForm<Room>({
+    initialValues: resource,
+  });
   const [_, setView] = useQueryState('view');
   const [__, setId] = useQueryState('id');
 
   async function handleSubmit(value: Room) {
-    const res = await roomRepository.create(value);
+    let res;
+    if (resource) {
+      res = await roomRepository.update(resource.id, value);
+    } else {
+      res = await roomRepository.create(value);
+    }
     await setView(null);
     await setId(res.id);
   }
@@ -49,7 +61,7 @@ export default function RoomForm() {
           <PhotoInput form={form} />
         </Tabs.Panel>
       </Tabs>
-      <SubmitButton>Create</SubmitButton>
+      <SubmitButton>{resource ? 'Update' : 'Create'}</SubmitButton>
     </form>
   );
 }
