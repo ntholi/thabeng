@@ -13,6 +13,8 @@ type Props = {
   };
 };
 
+export const revalidate = 60 * 5;
+
 export default async function RoomPage({ params: { id } }: Props) {
   const room = await roomRepository.get(id);
 
@@ -21,7 +23,7 @@ export default async function RoomPage({ params: { id } }: Props) {
   return (
     <Container>
       <ImageViewer images={room.images} />
-      <main className='mt-5 grid grid-cols-12 gap-5 sm:gap-10 sm:mt-10'>
+      <main className='mt-5 grid grid-cols-12 gap-5 sm:mt-10 sm:gap-10'>
         <div className='col-span-12 md:col-span-8'>
           <header className='flex justify-between'>
             <h1 className='text-3xl font-bold'>{room.name}</h1>

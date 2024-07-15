@@ -2,6 +2,8 @@ import { galleryRepository } from '@/app/(admin)/admin/gallery/repository';
 import React from 'react';
 import ImageGallery from './ImageGallery';
 
+export const revalidate = 60 * 5;
+
 export default async function GalleryPage() {
   const images = await galleryRepository.getAll();
   if (images.length < 1)

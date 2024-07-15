@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     'Restaurant, Food, Drinks, Meals, Desserts, Beverages, Cocktails, Gin & Tonic, Wine, Lesotho',
 };
 
+export const revalidate = 60 * 5;
+
 export default function RestaurantPage() {
   return (
     <div>

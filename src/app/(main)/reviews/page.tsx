@@ -7,6 +7,8 @@ import ReviewList from './ReviewList';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
+export const revalidate = 60 * 1;
+
 export default function ReviewPage() {
   return (
     <>

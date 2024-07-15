@@ -10,13 +10,15 @@ type Props = {
 };
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
+export const revalidate = 60 * 5;
+
 export default async function AuthorPage({ params: { id } }: Props) {
   return (
     <Container as={'main'} className='sm:mt-16'>
       <h1
         className={cn(
           font.className,
-          'text-6xl font-bold text-center text-blue-900'
+          'text-center text-6xl font-bold text-blue-900',
         )}
       >
         Thabeng, Posts

@@ -12,6 +12,8 @@ import { homePageRepository } from '../(admin)/admin/home-page/repository';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
+export const revalidate = 60 * 60;
+
 export default async function Home() {
   const homePage = await homePageRepository.getHomePage();
   return (

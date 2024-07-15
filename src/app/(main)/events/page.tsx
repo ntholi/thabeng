@@ -15,6 +15,8 @@ export const metadata: Metadata = {
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 
+export const revalidate = 60 * 5;
+
 export default async function EventsPage() {
   const events = await eventRepository.latestEvents();
   return (
