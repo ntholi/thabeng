@@ -89,7 +89,7 @@ function RoomCard({ room }: { room: Room }) {
           src={room.images[0]}
           as={NextImage}
           width={500}
-          height={500}
+          height={200}
         />
       </CardBody>
     </Card>

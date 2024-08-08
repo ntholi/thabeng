@@ -15,7 +15,7 @@ export default function ImageViewer({ images }: Props) {
       <div className='col-span-12 md:col-span-10'>
         <Image
           as={NextImage}
-          className='h-[60vh] w-full object-cover'
+          className='h-[60vh] max-h-[60vh] w-full object-cover'
           width={900}
           height={900}
           alt={APP_NAME}
@@ -30,7 +30,7 @@ export default function ImageViewer({ images }: Props) {
             width={200}
             height={200}
             src={image}
-            className='h-16 w-16 cursor-pointer rounded-md object-cover md:h-24 md:w-full'
+            className='h-16 max-h-16 w-16 cursor-pointer rounded-md object-cover md:h-24 md:max-h-24 md:w-full'
             alt={APP_NAME}
             onClick={() => setCurrentImage(index)}
           />
