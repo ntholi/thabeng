@@ -24,19 +24,22 @@ export default async function Home() {
         }}
         className={cn(
           'absolute top-0 min-h-dvh w-full bg-black/15 bg-cover bg-center text-white bg-blend-overlay',
-          'flex flex-col items-center justify-center',
+          'flex flex-col items-center',
         )}
       >
         <div
           className={cn(
-            'dark-overlay h-56 px-6 py-5 text-center sm:px-20',
+            'mt-[calc(50dvh-10rem)] px-6 py-5 text-center sm:w-[80vw] sm:rounded-lg sm:px-20 sm:py-10 lg:w-[50vw]',
+            'border-zinc-400/20 bg-zinc-400/5 backdrop-blur-sm sm:border-1',
             'flex flex-col gap-3.5',
           )}
         >
-          <h1 className={cn(font.className, 'text-5xl font-bold sm:text-7xl')}>
+          <h1
+            className={cn(font.className, 'text-5xl font-bold sm:text-[5rem]')}
+          >
             Thabeng Hotel
           </h1>
-          <p className='text-lg sm:text-xl'>{homePage?.tagline}</p>
+          <p className='sm:text-lg'>{homePage?.tagline}</p>
           <div className='text-center'>
             <Button
               variant='bordered'
@@ -52,8 +55,8 @@ export default async function Home() {
         </div>
         <nav
           className={cn(
-            'absolute bottom-0 mx-auto flex w-full justify-center gap-5 px-2 py-6 sm:bottom-5 sm:w-[80vw] sm:rounded-lg sm:py-10 lg:w-[45vw]',
-            'bg-white/45 backdrop-blur-md',
+            'absolute bottom-0 mx-auto flex w-full justify-center gap-5 px-2 py-6 sm:bottom-5 sm:w-[80vw] sm:rounded-lg sm:py-10 lg:w-[50vw]',
+            'border-1 border-zinc-400/20 bg-zinc-400/5 backdrop-blur-sm',
           )}
         >
           <ClickableCard icon={MdHotel} text='Hotel' href='#hotel' />
