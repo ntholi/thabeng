@@ -1,59 +1,81 @@
 'use client';
 import {
-  Navbar as NextUiNavbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Link,
+  NavbarMenuToggle,
+  Navbar as NextUINavbar,
 } from '@nextui-org/react';
-import { useState } from 'react';
+
+import { Link } from '@nextui-org/react';
+
+import Image from 'next/image';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
-import Image from 'next/image';
+import React, { useEffect } from 'react';
+
+const navItems = [
+  {
+    label: 'Hotel',
+    href: '/#hotel',
+  },
+  {
+    label: 'Restaurant',
+    href: '/restaurant',
+  },
+  {
+    label: 'Events',
+    href: '/events',
+  },
+  {
+    label: 'Posts',
+    href: '/posts',
+  },
+  {
+    label: 'Reviews',
+    href: '/reviews',
+  },
+  {
+    label: 'Gallery',
+    href: '/gallery',
+  },
+];
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [homeStyle, setHomeStyle] = React.useState('');
   const pathname = usePathname();
 
-  if (pathname.startsWith('/auth')) return null;
+  useEffect(() => {
+    const checkIfHome = () => {
+      if (
+        (window.scrollY < 100 && pathname === '/') ||
+        pathname.includes('/locations/')
+      ) {
+        setHomeStyle('sm:absolute sm:text-white sm:bg-black/10');
+      } else {
+        setHomeStyle('');
+      }
+    };
+    checkIfHome();
+    const handleScroll = () => {
+      checkIfHome();
+    };
 
-  const menuItems = [
-    {
-      label: 'Hotel',
-      href: '/#hotel',
-    },
-    {
-      label: 'Restaurant',
-      href: '/restaurant',
-    },
-    {
-      label: 'Events',
-      href: '/events',
-    },
-    {
-      label: 'Posts',
-      href: '/posts',
-    },
-    {
-      label: 'Reviews',
-      href: '/reviews',
-    },
-    {
-      label: 'Gallery',
-      href: '/gallery',
-    },
-  ];
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [pathname]);
+
+  const scrollToGallery = () => {
+    const gallerySection = document.getElementById('gallery');
+    gallerySection?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <NextUiNavbar onMenuOpenChange={setIsMenuOpen}>
+    <NextUINavbar maxWidth='xl' shouldHideOnScroll className={homeStyle}>
       <NavbarContent>
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          className='sm:hidden'
-        />
+        <NavbarMenuToggle className='sm:hidden' />
         <NavbarBrand>
           <NextLink href='/'>
             <Image
@@ -65,38 +87,43 @@ export default function Navbar() {
             />
           </NextLink>
         </NavbarBrand>
+        <ul className='ml-2 hidden justify-start gap-4 sm:flex'>
+          {navItems.map((item) => {
+            if (item.label == 'Gallery') {
+              return (
+                <NavbarItem key={item.href}>
+                  <button color='foreground' onClick={scrollToGallery}>
+                    {item.label}
+                  </button>
+                </NavbarItem>
+              );
+            }
+            return (
+              <NavbarItem key={item.href}>
+                <NextLink color='foreground' href={item.href}>
+                  {item.label}
+                </NextLink>
+              </NavbarItem>
+            );
+          })}
+        </ul>
       </NavbarContent>
 
-      <NavbarContent className='hidden gap-5 sm:flex' justify='center'>
-        {menuItems.map((item, index) => (
-          <NavbarItem key={`${item}-${index}`}>
-            <Link color='foreground' href={item.href} as={NextLink}>
-              {item.label}
-            </Link>
-          </NavbarItem>
-        ))}
-      </NavbarContent>
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              as={NextLink}
-              color={
-                index === 2
-                  ? 'primary'
-                  : index === menuItems.length - 1
-                    ? 'danger'
-                    : 'foreground'
-              }
-              className='w-full'
-              href={item.href}
-              size='lg'
-            >
-              {item.label}
-            </Link>
-          </NavbarMenuItem>
-        ))}
+        <div className='mx-4 mt-2 flex flex-col gap-2'>
+          {navItems.map((item, index) => (
+            <NavbarMenuItem key={`${item}-${index}`}>
+              <Link
+                color={index === 2 ? 'primary' : 'foreground'}
+                href='#'
+                size='lg'
+              >
+                {item.label}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+        </div>
       </NavbarMenu>
-    </NextUiNavbar>
+    </NextUINavbar>
   );
 }
