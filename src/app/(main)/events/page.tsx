@@ -5,7 +5,7 @@ import { Salsa } from 'next/font/google';
 import { Card, CardBody, cn } from '@nextui-org/react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { shorten } from '@/lib/utils';
+import { shorten, stripHtml } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Thabeng Events',
@@ -50,7 +50,9 @@ export default async function EventsPage() {
                   {fullDate(event.date)}
                 </p>
                 <h2 className='text-3xl'>{event.name}</h2>
-                <p className='mt-3'>{shorten(event.description, 150)}</p>
+                <p className='mt-3'>
+                  {stripHtml(shorten(event.description, 150))}
+                </p>
               </div>
             </article>
           </Card>
