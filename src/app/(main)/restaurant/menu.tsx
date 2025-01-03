@@ -1,19 +1,15 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import Container from '../core/Container';
-import { Salsa } from 'next/font/google';
-import { cn } from '@/lib/utils';
 import {
   MenuItem,
   MenuItemType,
 } from '@/app/(admin)/admin/restaurant/menu/MenuItem';
-import {
-  MenuItemRepository,
-  menuItemRepository,
-} from '@/app/(admin)/admin/restaurant/menu/menuItemRepository';
+import { menuItemRepository } from '@/app/(admin)/admin/restaurant/menu/menuItemRepository';
+import { cn } from '@/lib/utils';
+import { Salsa } from 'next/font/google';
+import { useEffect, useRef, useState } from 'react';
+import Container from '../core/Container';
 import MenuDisplay from './MenuDisplay';
-import { Meal } from '@/app/(admin)/admin/restaurant/meals/Meal';
 
 const font = Salsa({ weight: '400', subsets: ['latin'] });
 

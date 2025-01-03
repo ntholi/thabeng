@@ -1,5 +1,4 @@
 import { Resource } from '@/app/(admin)/admin-core/repository/repository';
-import { MenuItem } from '../menu/MenuItem';
 
 export const MealTimeNames = [
   'Breakfast',
@@ -10,7 +9,7 @@ export const MealTimeNames = [
 ] as const;
 type MealTimeName = (typeof MealTimeNames)[number];
 
-export interface MealTime extends MenuItem {
+export interface MealTime extends Resource {
   name: MealTimeName;
   startTime: string;
   endTime: string;

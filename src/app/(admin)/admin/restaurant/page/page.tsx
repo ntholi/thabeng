@@ -1,12 +1,10 @@
 'use client';
 import { ImagePicker } from '@/app/(admin)/admin-core';
 import {
-  Box,
   Button,
   Stack,
   TextInput,
-  Textarea,
-  useComputedColorScheme,
+  useComputedColorScheme
 } from '@mantine/core';
 import { useEffect, useState, useTransition } from 'react';
 import { restaurantPageRepository } from './repository';

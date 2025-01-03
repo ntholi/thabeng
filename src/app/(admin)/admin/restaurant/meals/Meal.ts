@@ -12,7 +12,6 @@ export const MealCategories = [
 export type MealCategory = (typeof MealCategories)[number];
 
 export interface Meal extends MenuItem {
-  name: string;
   category: MealCategory;
   description: string;
   price: number;

@@ -9,5 +9,6 @@ export type MenuItemType =
   | 'Wine';
 
 export interface MenuItem extends Resource {
+  name: string;
   type: MenuItemType;
 }
