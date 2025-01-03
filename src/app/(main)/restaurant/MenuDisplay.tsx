@@ -90,16 +90,16 @@ function ItemSwitch({ value }: { value: MenuItem }) {
 function MealDisplay({ value }: { value: Meal | Cocktail | Gin }) {
   return (
     <div className='group -m-4 rounded-lg p-4 transition-colors hover:bg-gray-50'>
-      <div className='flex items-start justify-between'>
-        <div>
+      <div>
+        <div className='flex items-start justify-between'>
           <p className='font-semibold transition-colors group-hover:text-blue-900/90'>
             {value.name}
           </p>
-          <p className='mt-1 text-sm text-gray-500'>{value.description}</p>
+          <p className='ml-4 text-sm font-medium text-blue-900/90'>
+            {formatMoney(value.price)}
+          </p>
         </div>
-        <p className='ml-4 text-sm font-medium text-blue-900/90'>
-          {formatMoney(value.price)}
-        </p>
+        <p className='mt-1 text-sm text-gray-500'>{value.description}</p>
       </div>
     </div>
   );
