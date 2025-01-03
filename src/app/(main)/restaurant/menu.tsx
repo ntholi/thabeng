@@ -38,7 +38,7 @@ export default function Menu() {
   const [selected, setSelected] = useState<MenuItemType | null>(null);
 
   useEffect(() => {
-    menuItemRepository.getAll().then(setData);
+    menuItemRepository.getAll(500).then(setData);
   }, []);
 
   function handleSelect(type: MenuItemType) {
