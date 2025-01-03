@@ -1,6 +1,14 @@
 import { FirebaseRepository } from '@/app/(admin)/admin-core';
 import { MenuItem, MenuItemType } from './MenuItem';
 import { ResourceCreate } from '@/app/(admin)/admin-core/repository/repository';
+import {
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from 'firebase/firestore';
+import { db } from '@/lib/config/firebase';
 
 export class MenuItemRepository<
   T extends MenuItem,
@@ -24,7 +32,22 @@ export class MenuItemRepository<
       field: 'type',
       value: this.type,
     };
-    return super.listen(callback, filter);
+    const ref = collection(db, this.collectionName);
+    const q = filter
+      ? query(
+          ref,
+          where(filter.field, '==', filter.value),
+          orderBy('name', 'asc'),
+        )
+      : query(ref, orderBy('name', 'asc'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const resources: T[] = [];
+      snapshot.forEach((doc) => {
+        resources.push({ ...doc.data(), id: doc.id } as T);
+      });
+      callback(resources);
+    });
+    return unsubscribe;
   }
 }
 
